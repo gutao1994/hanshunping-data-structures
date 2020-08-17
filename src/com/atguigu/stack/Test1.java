@@ -9,17 +9,29 @@ public class Test1 {
 
 		System.out.println(a == b);
 
-		System.out.println("1" == "1");
+//		test1(a, b);
 
-		Aa a1 = new Aa();
-		Aa a2 = new Aa();
-		System.out.println(a1 == a2);
+		String shortA = a.substring(0, 1);
+		String shortB = b.substring(0, 1);
+
+		System.out.println(shortA == shortB);
+
+//		test1(, );
+
+//		System.out.println("1" == "1");
+//
+//		Aa a1 = new Aa();
+//		Aa a2 = new Aa();
+//		System.out.println(a1 == a2);
 	}
 
+	public static void test1(String str1, String str2) {
+		System.out.println(str1);
+		System.out.println(str2);
+		System.out.println(str1 == str2);
+	}
 }
 
 class Aa {
 
 }
-
-
