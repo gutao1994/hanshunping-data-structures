@@ -3,14 +3,14 @@ package com.atguigu.linkedlist;
 public class DoubleLinkedListDemo {
 
 	public static void main(String[] args) {
-		// ²âÊÔ
-		System.out.println("Ë«ÏòÁ´±íµÄ²âÊÔ");
-		// ÏÈ´´½¨½Úµã
-		HeroNode2 hero1 = new HeroNode2(1, "ËÎ½­", "¼°Ê±Óê");
-		HeroNode2 hero2 = new HeroNode2(2, "Â¬¿¡Òå", "Óñ÷è÷ë");
-		HeroNode2 hero3 = new HeroNode2(3, "ÎâÓÃ", "ÖÇ¶àĞÇ");
-		HeroNode2 hero4 = new HeroNode2(4, "ÁÖ³å", "±ª×ÓÍ·");
-		// ´´½¨Ò»¸öË«ÏòÁ´±í
+		// æµ‹è¯•
+		System.out.println("åŒå‘é“¾è¡¨çš„æµ‹è¯•");
+		// å…ˆåˆ›å»ºèŠ‚ç‚¹
+		HeroNode2 hero1 = new HeroNode2(1, "å®‹æ±Ÿ", "åŠæ—¶é›¨");
+		HeroNode2 hero2 = new HeroNode2(2, "å¢ä¿Šä¹‰", "ç‰éº’éºŸ");
+		HeroNode2 hero3 = new HeroNode2(3, "å´ç”¨", "æ™ºå¤šæ˜Ÿ");
+		HeroNode2 hero4 = new HeroNode2(4, "æ—å†²", "è±¹å­å¤´");
+		// åˆ›å»ºä¸€ä¸ªåŒå‘é“¾è¡¨
 		DoubleLinkedList doubleLinkedList = new DoubleLinkedList();
 		doubleLinkedList.add(hero1);
 		doubleLinkedList.add(hero2);
@@ -19,15 +19,15 @@ public class DoubleLinkedListDemo {
 		
 		doubleLinkedList.list();
 		
-		// ĞŞ¸Ä
-		HeroNode2 newHeroNode = new HeroNode2(4, "¹«ËïÊ¤", "ÈëÔÆÁú");
+		// ä¿®æ”¹
+		HeroNode2 newHeroNode = new HeroNode2(4, "å…¬å­™èƒœ", "å…¥äº‘é¾™");
 		doubleLinkedList.update(newHeroNode);
-		System.out.println("ĞŞ¸ÄºóµÄÁ´±íÇé¿ö");
+		System.out.println("ä¿®æ”¹åçš„é“¾è¡¨æƒ…å†µ");
 		doubleLinkedList.list();
 		
-		// É¾³ı
+		// åˆ é™¤
 		doubleLinkedList.del(3);
-		System.out.println("É¾³ıºóµÄÁ´±íÇé¿ö~~");
+		System.out.println("åˆ é™¤åçš„é“¾è¡¨æƒ…å†µ~~");
 		doubleLinkedList.list();
 		
 		
@@ -36,141 +36,141 @@ public class DoubleLinkedListDemo {
 
 }
 
-// ´´½¨Ò»¸öË«ÏòÁ´±íµÄÀà
+// åˆ›å»ºä¸€ä¸ªåŒå‘é“¾è¡¨çš„ç±»
 class DoubleLinkedList {
 
-	// ÏÈ³õÊ¼»¯Ò»¸öÍ·½Úµã, Í·½Úµã²»Òª¶¯, ²»´æ·Å¾ßÌåµÄÊı¾İ
+	// å…ˆåˆå§‹åŒ–ä¸€ä¸ªå¤´èŠ‚ç‚¹, å¤´èŠ‚ç‚¹ä¸è¦åŠ¨, ä¸å­˜æ”¾å…·ä½“çš„æ•°æ®
 	private HeroNode2 head = new HeroNode2(0, "", "");
 
-	// ·µ»ØÍ·½Úµã
+	// è¿”å›å¤´èŠ‚ç‚¹
 	public HeroNode2 getHead() {
 		return head;
 	}
 
-	// ±éÀúË«ÏòÁ´±íµÄ·½·¨
-	// ÏÔÊ¾Á´±í[±éÀú]
+	// éå†åŒå‘é“¾è¡¨çš„æ–¹æ³•
+	// æ˜¾ç¤ºé“¾è¡¨[éå†]
 	public void list() {
-		// ÅĞ¶ÏÁ´±íÊÇ·ñÎª¿Õ
+		// åˆ¤æ–­é“¾è¡¨æ˜¯å¦ä¸ºç©º
 		if (head.next == null) {
-			System.out.println("Á´±íÎª¿Õ");
+			System.out.println("é“¾è¡¨ä¸ºç©º");
 			return;
 		}
-		// ÒòÎªÍ·½Úµã£¬²»ÄÜ¶¯£¬Òò´ËÎÒÃÇĞèÒªÒ»¸ö¸¨Öú±äÁ¿À´±éÀú
+		// å› ä¸ºå¤´èŠ‚ç‚¹ï¼Œä¸èƒ½åŠ¨ï¼Œå› æ­¤æˆ‘ä»¬éœ€è¦ä¸€ä¸ªè¾…åŠ©å˜é‡æ¥éå†
 		HeroNode2 temp = head.next;
 		while (true) {
-			// ÅĞ¶ÏÊÇ·ñµ½Á´±í×îºó
+			// åˆ¤æ–­æ˜¯å¦åˆ°é“¾è¡¨æœ€å
 			if (temp == null) {
 				break;
 			}
-			// Êä³ö½ÚµãµÄĞÅÏ¢
+			// è¾“å‡ºèŠ‚ç‚¹çš„ä¿¡æ¯
 			System.out.println(temp);
-			// ½«tempºóÒÆ£¬ Ò»¶¨Ğ¡ĞÄ
+			// å°†tempåç§»ï¼Œ ä¸€å®šå°å¿ƒ
 			temp = temp.next;
 		}
 	}
 
-	// Ìí¼ÓÒ»¸ö½Úµãµ½Ë«ÏòÁ´±íµÄ×îºó.
+	// æ·»åŠ ä¸€ä¸ªèŠ‚ç‚¹åˆ°åŒå‘é“¾è¡¨çš„æœ€å.
 	public void add(HeroNode2 heroNode) {
 
-		// ÒòÎªhead½Úµã²»ÄÜ¶¯£¬Òò´ËÎÒÃÇĞèÒªÒ»¸ö¸¨Öú±éÀú temp
+		// å› ä¸ºheadèŠ‚ç‚¹ä¸èƒ½åŠ¨ï¼Œå› æ­¤æˆ‘ä»¬éœ€è¦ä¸€ä¸ªè¾…åŠ©éå† temp
 		HeroNode2 temp = head;
-		// ±éÀúÁ´±í£¬ÕÒµ½×îºó
+		// éå†é“¾è¡¨ï¼Œæ‰¾åˆ°æœ€å
 		while (true) {
-			// ÕÒµ½Á´±íµÄ×îºó
+			// æ‰¾åˆ°é“¾è¡¨çš„æœ€å
 			if (temp.next == null) {//
 				break;
 			}
-			// Èç¹ûÃ»ÓĞÕÒµ½×îºó, ½«½«tempºóÒÆ
+			// å¦‚æœæ²¡æœ‰æ‰¾åˆ°æœ€å, å°†å°†tempåç§»
 			temp = temp.next;
 		}
-		// µ±ÍË³öwhileÑ­»·Ê±£¬temp¾ÍÖ¸ÏòÁËÁ´±íµÄ×îºó
-		// ĞÎ³ÉÒ»¸öË«ÏòÁ´±í
+		// å½“é€€å‡ºwhileå¾ªç¯æ—¶ï¼Œtempå°±æŒ‡å‘äº†é“¾è¡¨çš„æœ€å
+		// å½¢æˆä¸€ä¸ªåŒå‘é“¾è¡¨
 		temp.next = heroNode;
 		heroNode.pre = temp;
 	}
 
-	// ĞŞ¸ÄÒ»¸ö½ÚµãµÄÄÚÈİ, ¿ÉÒÔ¿´µ½Ë«ÏòÁ´±íµÄ½ÚµãÄÚÈİĞŞ¸ÄºÍµ¥ÏòÁ´±íÒ»Ñù
-	// Ö»ÊÇ ½ÚµãÀàĞÍ¸Ä³É HeroNode2
+	// ä¿®æ”¹ä¸€ä¸ªèŠ‚ç‚¹çš„å†…å®¹, å¯ä»¥çœ‹åˆ°åŒå‘é“¾è¡¨çš„èŠ‚ç‚¹å†…å®¹ä¿®æ”¹å’Œå•å‘é“¾è¡¨ä¸€æ ·
+	// åªæ˜¯ èŠ‚ç‚¹ç±»å‹æ”¹æˆ HeroNode2
 	public void update(HeroNode2 newHeroNode) {
-		// ÅĞ¶ÏÊÇ·ñ¿Õ
+		// åˆ¤æ–­æ˜¯å¦ç©º
 		if (head.next == null) {
-			System.out.println("Á´±íÎª¿Õ~");
+			System.out.println("é“¾è¡¨ä¸ºç©º~");
 			return;
 		}
-		// ÕÒµ½ĞèÒªĞŞ¸ÄµÄ½Úµã, ¸ù¾İno±àºÅ
-		// ¶¨ÒåÒ»¸ö¸¨Öú±äÁ¿
+		// æ‰¾åˆ°éœ€è¦ä¿®æ”¹çš„èŠ‚ç‚¹, æ ¹æ®noç¼–å·
+		// å®šä¹‰ä¸€ä¸ªè¾…åŠ©å˜é‡
 		HeroNode2 temp = head.next;
-		boolean flag = false; // ±íÊ¾ÊÇ·ñÕÒµ½¸Ã½Úµã
+		boolean flag = false; // è¡¨ç¤ºæ˜¯å¦æ‰¾åˆ°è¯¥èŠ‚ç‚¹
 		while (true) {
 			if (temp == null) {
-				break; // ÒÑ¾­±éÀúÍêÁ´±í
+				break; // å·²ç»éå†å®Œé“¾è¡¨
 			}
 			if (temp.no == newHeroNode.no) {
-				// ÕÒµ½
+				// æ‰¾åˆ°
 				flag = true;
 				break;
 			}
 			temp = temp.next;
 		}
-		// ¸ù¾İflag ÅĞ¶ÏÊÇ·ñÕÒµ½ÒªĞŞ¸ÄµÄ½Úµã
+		// æ ¹æ®flag åˆ¤æ–­æ˜¯å¦æ‰¾åˆ°è¦ä¿®æ”¹çš„èŠ‚ç‚¹
 		if (flag) {
 			temp.name = newHeroNode.name;
 			temp.nickname = newHeroNode.nickname;
-		} else { // Ã»ÓĞÕÒµ½
-			System.out.printf("Ã»ÓĞÕÒµ½ ±àºÅ %d µÄ½Úµã£¬²»ÄÜĞŞ¸Ä\n", newHeroNode.no);
+		} else { // æ²¡æœ‰æ‰¾åˆ°
+			System.out.printf("æ²¡æœ‰æ‰¾åˆ° ç¼–å· %d çš„èŠ‚ç‚¹ï¼Œä¸èƒ½ä¿®æ”¹\n", newHeroNode.no);
 		}
 	}
 
-	// ´ÓË«ÏòÁ´±íÖĞÉ¾³ıÒ»¸ö½Úµã,
-	// ËµÃ÷
-	// 1 ¶ÔÓÚË«ÏòÁ´±í£¬ÎÒÃÇ¿ÉÒÔÖ±½ÓÕÒµ½ÒªÉ¾³ıµÄÕâ¸ö½Úµã
-	// 2 ÕÒµ½ºó£¬×ÔÎÒÉ¾³ı¼´¿É
+	// ä»åŒå‘é“¾è¡¨ä¸­åˆ é™¤ä¸€ä¸ªèŠ‚ç‚¹,
+	// è¯´æ˜
+	// 1 å¯¹äºåŒå‘é“¾è¡¨ï¼Œæˆ‘ä»¬å¯ä»¥ç›´æ¥æ‰¾åˆ°è¦åˆ é™¤çš„è¿™ä¸ªèŠ‚ç‚¹
+	// 2 æ‰¾åˆ°åï¼Œè‡ªæˆ‘åˆ é™¤å³å¯
 	public void del(int no) {
 
-		// ÅĞ¶Ïµ±Ç°Á´±íÊÇ·ñÎª¿Õ
-		if (head.next == null) {// ¿ÕÁ´±í
-			System.out.println("Á´±íÎª¿Õ£¬ÎŞ·¨É¾³ı");
+		// åˆ¤æ–­å½“å‰é“¾è¡¨æ˜¯å¦ä¸ºç©º
+		if (head.next == null) {// ç©ºé“¾è¡¨
+			System.out.println("é“¾è¡¨ä¸ºç©ºï¼Œæ— æ³•åˆ é™¤");
 			return;
 		}
 
-		HeroNode2 temp = head.next; // ¸¨Öú±äÁ¿(Ö¸Õë)
-		boolean flag = false; // ±êÖ¾ÊÇ·ñÕÒµ½´ıÉ¾³ı½ÚµãµÄ
+		HeroNode2 temp = head.next; // è¾…åŠ©å˜é‡(æŒ‡é’ˆ)
+		boolean flag = false; // æ ‡å¿—æ˜¯å¦æ‰¾åˆ°å¾…åˆ é™¤èŠ‚ç‚¹çš„
 		while (true) {
-			if (temp == null) { // ÒÑ¾­µ½Á´±íµÄ×îºó
+			if (temp == null) { // å·²ç»åˆ°é“¾è¡¨çš„æœ€å
 				break;
 			}
 			if (temp.no == no) {
-				// ÕÒµ½µÄ´ıÉ¾³ı½ÚµãµÄÇ°Ò»¸ö½Úµãtemp
+				// æ‰¾åˆ°çš„å¾…åˆ é™¤èŠ‚ç‚¹çš„å‰ä¸€ä¸ªèŠ‚ç‚¹temp
 				flag = true;
 				break;
 			}
-			temp = temp.next; // tempºóÒÆ£¬±éÀú
+			temp = temp.next; // tempåç§»ï¼Œéå†
 		}
-		// ÅĞ¶Ïflag
-		if (flag) { // ÕÒµ½
-			// ¿ÉÒÔÉ¾³ı
-			// temp.next = temp.next.next;[µ¥ÏòÁ´±í]
+		// åˆ¤æ–­flag
+		if (flag) { // æ‰¾åˆ°
+			// å¯ä»¥åˆ é™¤
+			// temp.next = temp.next.next;[å•å‘é“¾è¡¨]
 			temp.pre.next = temp.next;
-			// ÕâÀïÎÒÃÇµÄ´úÂëÓĞÎÊÌâ?
-			// Èç¹ûÊÇ×îºóÒ»¸ö½Úµã£¬¾Í²»ĞèÒªÖ´ĞĞÏÂÃæÕâ¾ä»°£¬·ñÔò³öÏÖ¿ÕÖ¸Õë
+			// è¿™é‡Œæˆ‘ä»¬çš„ä»£ç æœ‰é—®é¢˜?
+			// å¦‚æœæ˜¯æœ€åä¸€ä¸ªèŠ‚ç‚¹ï¼Œå°±ä¸éœ€è¦æ‰§è¡Œä¸‹é¢è¿™å¥è¯ï¼Œå¦åˆ™å‡ºç°ç©ºæŒ‡é’ˆ
 			if (temp.next != null) {
 				temp.next.pre = temp.pre;
 			}
 		} else {
-			System.out.printf("ÒªÉ¾³ıµÄ %d ½Úµã²»´æÔÚ\n", no);
+			System.out.printf("è¦åˆ é™¤çš„ %d èŠ‚ç‚¹ä¸å­˜åœ¨\n", no);
 		}
 	}
 
 }
 
-// ¶¨ÒåHeroNode2 £¬ Ã¿¸öHeroNode ¶ÔÏó¾ÍÊÇÒ»¸ö½Úµã
+// å®šä¹‰HeroNode2 ï¼Œ æ¯ä¸ªHeroNode å¯¹è±¡å°±æ˜¯ä¸€ä¸ªèŠ‚ç‚¹
 class HeroNode2 {
 	public int no;
 	public String name;
 	public String nickname;
-	public HeroNode2 next; // Ö¸ÏòÏÂÒ»¸ö½Úµã, Ä¬ÈÏÎªnull
-	public HeroNode2 pre; // Ö¸ÏòÇ°Ò»¸ö½Úµã, Ä¬ÈÏÎªnull
-	// ¹¹ÔìÆ÷
+	public HeroNode2 next; // æŒ‡å‘ä¸‹ä¸€ä¸ªèŠ‚ç‚¹, é»˜è®¤ä¸ºnull
+	public HeroNode2 pre; // æŒ‡å‘å‰ä¸€ä¸ªèŠ‚ç‚¹, é»˜è®¤ä¸ºnull
+	// æ„é€ å™¨
 
 	public HeroNode2(int no, String name, String nickname) {
 		this.no = no;
@@ -178,7 +178,7 @@ class HeroNode2 {
 		this.nickname = nickname;
 	}
 
-	// ÎªÁËÏÔÊ¾·½·¨£¬ÎÒÃÇÖØĞÂtoString
+	// ä¸ºäº†æ˜¾ç¤ºæ–¹æ³•ï¼Œæˆ‘ä»¬é‡æ–°toString
 	@Override
 	public String toString() {
 		return "HeroNode [no=" + no + ", name=" + name + ", nickname=" + nickname + "]";

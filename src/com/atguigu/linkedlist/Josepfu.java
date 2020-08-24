@@ -23,7 +23,7 @@ class SingleCircleLinkedList {
 
 	public void addBoy(int num) {
 		if (num < 1) {
-			System.out.println("num±ØÐë´óÓÚµÈÓÚ1");
+			System.out.println("numå¿…é¡»å¤§äºŽç­‰äºŽ1");
 			return;
 		}
 
@@ -46,7 +46,7 @@ class SingleCircleLinkedList {
 
 	public void printBoy() {
 		if (this.first == null) {
-			System.out.println("Ã»ÓÐ½Úµã");
+			System.out.println("æ²¡æœ‰èŠ‚ç‚¹");
 			return;
 		}
 
@@ -65,28 +65,28 @@ class SingleCircleLinkedList {
 
 	public void josepfuOut(int startNo, int countNum) {
 		if (this.first == null) {
-			System.out.println("Ã»ÓÐ½Úµã");
+			System.out.println("æ²¡æœ‰èŠ‚ç‚¹");
 			return;
 		}
 
 		if (startNo < 1 || startNo > this.num || countNum < 1) {
-			System.out.println("²»ºÏ·¨µÄÊý¾ÝÊäÈë");
+			System.out.println("ä¸åˆæ³•çš„æ•°æ®è¾“å…¥");
 			return;
 		}
 
 		Boy preBoy = this.first;
-		while (preBoy.getNext() != this.first) { //ÈÃpreBoyÔÚfirstµÄºóÃæ
+		while (preBoy.getNext() != this.first) { //è®©preBoyåœ¨firstçš„åŽé¢
 			preBoy = preBoy.getNext();
 		}
 
-		for (int i = 0; i < startNo - 1; i++) { //³õÊ¼»¯¿ªÊ¼µÄÎ»ÖÃ
+		for (int i = 0; i < startNo - 1; i++) { //åˆå§‹åŒ–å¼€å§‹çš„ä½ç½®
 			this.first = this.first.getNext();
 			preBoy = preBoy.getNext();
 		}
 
 		while (true) {
-			if (preBoy == this.first) { //Ö»Ê£Ò»¸ö½Úµã
-				System.out.printf("µ±Ç°³öÈ¦µÄ±àºÅ: %d\n", this.first.getNo());
+			if (preBoy == this.first) { //åªå‰©ä¸€ä¸ªèŠ‚ç‚¹
+				System.out.printf("å½“å‰å‡ºåœˆçš„ç¼–å·: %d\n", this.first.getNo());
 				this.first = null;
 				break;
 			}
@@ -96,7 +96,7 @@ class SingleCircleLinkedList {
 				preBoy = preBoy.getNext();
 			}
 
-			System.out.printf("µ±Ç°³öÈ¦µÄ±àºÅ: %d\n", this.first.getNo());
+			System.out.printf("å½“å‰å‡ºåœˆçš„ç¼–å·: %d\n", this.first.getNo());
 
 			this.first = this.first.getNext();
 			preBoy.setNext(this.first);
