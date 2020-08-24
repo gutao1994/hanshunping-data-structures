@@ -8,8 +8,8 @@ public class MiGong {
 
 		genObstacle(map);
 
-//		System.out.println("地图的情况");
-//		printMap(map);
+		System.out.println("地图的情况");
+		printMap(map);
 
 		setWay(map, 1, 1);
 
@@ -53,7 +53,7 @@ public class MiGong {
 			for (int j = 0; j < cols; j++) {
 				if (i == 0 || i == rows - 1) {
 					map[i][j] = '-';
-				} else if ( (j == 0 && i != 0 && i != rows - 1) || (j == cols - 1 && i != 0 && i != rows - 1) ) {
+				} else if (j == 0 || j == cols - 1) {
 					map[i][j] = '|';
 				} else {
 					map[i][j] = 'o';
