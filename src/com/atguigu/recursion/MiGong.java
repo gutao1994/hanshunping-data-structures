@@ -8,8 +8,8 @@ public class MiGong {
 
 		genObstacle(map);
 
-		System.out.println("地图的情况");
-		printMap(map);
+//		System.out.println("地图的情况");
+//		printMap(map);
 
 		setWay(map, 1, 1);
 
@@ -74,6 +74,12 @@ public class MiGong {
 		map[3][3] = '|';
 		map[2][3] = '-';
 		map[2][2] = '-';
+
+		map[6][3] = '-';
+		map[6][4] = '-';
+		map[6][5] = '-';
+		map[6][6] = '-';
+		map[6][7] = '-';
 	}
 
 	/**
