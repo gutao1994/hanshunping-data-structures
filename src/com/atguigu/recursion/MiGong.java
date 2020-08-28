@@ -6,12 +6,12 @@ public class MiGong {
 
 		char[][] map = genMiGong(10, 9);
 
-		genObstacle2(map);
+		genObstacle3(map);
 
 		System.out.println("地图的情况");
 		printMap(map);
 
-		setWay4(map, 1, 1);
+		setWay(map, 1, 1);
 
 		System.out.println("\n小球走过，并标识过的 地图的情况");
 		printMap(map);
@@ -26,7 +26,7 @@ public class MiGong {
 			return true;
 		}
 
-		if (map[col][row] == 'o') { //当前所在的点没有走过
+		if (map[col][row] == 'o') { //当前所在的点没有走过，递归出去
 			map[col][row] = '>';
 
 			if (setWay(map, col + 1, row)) { //向下
@@ -184,6 +184,21 @@ public class MiGong {
 		map[3][5] = '|';
 		map[3][4] = '-';
 		map[3][3] = '-';
+	}
+
+	public static void genObstacle3(char[][] map) {
+		map[3][1] = '-';
+		map[3][2] = '-';
+		map[3][3] = '-';
+		map[3][4] = '-';
+		map[5][4] = '-';
+		map[5][5] = '-';
+		map[5][6] = '-';
+		map[5][7] = '-';
+		map[7][1] = '-';
+		map[7][2] = '-';
+		map[7][3] = '-';
+		map[7][4] = '-';
 	}
 
 	/**
