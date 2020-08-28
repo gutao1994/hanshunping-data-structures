@@ -6,17 +6,20 @@ public class MiGong {
 
 		char[][] map = genMiGong(10, 9);
 
-		genObstacle(map);
+		genObstacle2(map);
 
 		System.out.println("地图的情况");
 		printMap(map);
 
-		setWay(map, 1, 1);
+		setWay4(map, 1, 1);
 
 		System.out.println("\n小球走过，并标识过的 地图的情况");
 		printMap(map);
 	}
 
+	/**
+	 * ↓ → ↑ ←
+	 */
 	public static boolean setWay (char[][] map, int col, int row) {
 		if (col == map.length - 2 && row == map[0].length - 2) { //首先判断是否到达目标点
 			map[col][row] = '>';
@@ -33,6 +36,93 @@ public class MiGong {
 			} else if (setWay(map, col - 1, row)) { //向上
 				return true;
 			} else if (setWay(map, col, row - 1)) { //向左
+				return true;
+			} else {
+				map[col][row] = 'x';
+				return false;
+			}
+		} else { //1:墙、障碍物    2:走过的点    3:无法走的点
+			return false;
+		}
+	}
+
+	/**
+	 * ← → ↓ ↑
+	 */
+	public static boolean setWay2 (char[][] map, int col, int row) {
+		if (col == map.length - 2 && row == map[0].length - 2) { //首先判断是否到达目标点
+			map[col][row] = '>';
+			return true;
+		}
+
+		if (map[col][row] == 'o') { //当前所在的点没有走过
+			map[col][row] = '>';
+
+			if (setWay2(map, col, row - 1)) { //向左
+				return true;
+			} else if (setWay2(map, col, row + 1)) { //向右
+				return true;
+			} else if (setWay2(map, col + 1, row)) { //向下
+				return true;
+			} else if (setWay2(map, col - 1, row)) { //向上
+				return true;
+			} else {
+				map[col][row] = 'x';
+				return false;
+			}
+		} else { //1:墙、障碍物    2:走过的点    3:无法走的点
+			return false;
+		}
+	}
+
+	/**
+	 * → ↓ ← ↑
+	 */
+	public static boolean setWay3 (char[][] map, int col, int row) {
+		if (col == map.length - 2 && row == map[0].length - 2) { //首先判断是否到达目标点
+			map[col][row] = '>';
+			return true;
+		}
+
+		if (map[col][row] == 'o') { //当前所在的点没有走过
+			map[col][row] = '>';
+
+			if (setWay3(map, col, row + 1)) {
+				return true;
+			} else if (setWay3(map, col + 1, row)) {
+				return true;
+			} else if (setWay3(map, col, row - 1)) {
+				return true;
+			} else if (setWay3(map, col - 1, row)) {
+				return true;
+			} else {
+				map[col][row] = 'x';
+				return false;
+			}
+		} else { //1:墙、障碍物    2:走过的点    3:无法走的点
+			return false;
+		}
+	}
+
+	/**
+	 * ↓ ← ↑ →
+	 */
+	public static boolean setWay4 (char[][] map, int col, int row) {
+		if (col == map.length - 2 && row == map[0].length - 2) { //首先判断是否到达目标点
+			map[col][row] = '>';
+			return true;
+		}
+
+		if (map[col][row] == 'o') { //当前所在的点没有走过
+			map[col][row] = '>';
+
+			if (setWay4(map, col + 1, row)) {
+				return true;
+			} else if (setWay4(map, col, row - 1)) {
+				return true;
+			} else if (setWay4(map, col - 1, row)) {
+				return true;
+			} else if (setWay4(map, col, row + 1)) {
 				return true;
 			} else {
 				map[col][row] = 'x';
@@ -80,6 +170,20 @@ public class MiGong {
 		map[6][5] = '-';
 		map[6][6] = '-';
 		map[6][7] = '-';
+	}
+
+	public static void genObstacle2(char[][] map) {
+		map[7][1] = '-';
+		map[7][2] = '-';
+		map[7][3] = '-';
+		map[7][4] = '-';
+		map[7][5] = '-';
+		map[6][5] = '|';
+		map[5][5] = '|';
+		map[4][5] = '|';
+		map[3][5] = '|';
+		map[3][4] = '-';
+		map[3][3] = '-';
 	}
 
 	/**
