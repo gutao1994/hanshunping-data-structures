@@ -13,6 +13,9 @@ public class Queue8 {
         System.out.println("共走了" + queue8.count2 + "步");
     }
 
+    /**
+     * 放置皇后
+     */
     public void placeQueue(int row) {
         if (row == 8) {
             count++;
@@ -31,6 +34,9 @@ public class Queue8 {
         }
     }
 
+    /**
+     * 检测是否可以放置
+     */
     public boolean canPlace(int row, int col) {
         for (int i = 0; i < row; i++) {
             if ((arr[i] == col) || (row - i == Math.abs(col - arr[i]))) {
