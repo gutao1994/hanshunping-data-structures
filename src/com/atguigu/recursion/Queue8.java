@@ -28,7 +28,7 @@ public class Queue8 {
 
             arr[row] = col;
 
-            if (canPlace(row, col)) {
+            if (canPlace(row, col)) { //能放置
                 placeQueue(row + 1);
             }
         }
