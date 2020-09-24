@@ -31,10 +31,10 @@ public class PolandNotation {
 		do {
 			cur = inFixString.charAt(index);
 
-			if (cur < 48 || cur > 57) { //·ÇÊı×Ö
+			if (cur < 48 || cur > 57) { //éæ•°å­—
 				list.add(cur + "");
 				index++;
-			} else { //Êı×Ö
+			} else { //æ•°å­—
 				intStr = "";
 
 				while (index < inFixString.length() && (cur = inFixString.charAt(index)) >= 48 && cur <= 57) {
@@ -54,17 +54,17 @@ public class PolandNotation {
 		Stack<String> stack2 = new Stack<>();
 
 		for (String cur : infixList) {
-			if (cur.matches("\\d+")) { //Êı×Ö
+			if (cur.matches("\\d+")) { //æ•°å­—
 				list1.add(cur);
-			} else if (cur.equals("(")) { //×óÀ¨ºÅ
+			} else if (cur.equals("(")) { //å·¦æ‹¬å·
 				stack2.push(cur);
-			} else if (cur.equals(")")) { //ÓÒÀ¨ºÅ
+			} else if (cur.equals(")")) { //å³æ‹¬å·
 				while (!stack2.peek().equals("(")) {
 					list1.add(stack2.pop());
 				}
 
 				stack2.pop();
-			} else { //ÔËËã·û
+			} else { //è¿ç®—ç¬¦
 				while (
 					stack2.size() != 0 &&
 					!isBracket(stack2.peek()) &&
@@ -88,7 +88,7 @@ public class PolandNotation {
 		Stack<String> stack = new Stack<>();
 
 		for (String cur : suffixList) {
-			if (cur.matches("\\d+")) { //Êı×Ö
+			if (cur.matches("\\d+")) { //æ•°å­—
 				stack.push(cur);
 			} else {
 				int res = calculate(Integer.parseInt(stack.pop()), Integer.parseInt(stack.pop()), cur.charAt(0));
@@ -100,7 +100,7 @@ public class PolandNotation {
 	}
 
 	/**
-	 * ÅĞ¶ÏÊÇ·ñÊÇ×óÀ¨ºÅ»òÕßÓÒÀ¨ºÅ
+	 * åˆ¤æ–­æ˜¯å¦æ˜¯å·¦æ‹¬å·æˆ–è€…å³æ‹¬å·
 	 */
 	public static boolean isBracket(String str) {
 		return str.equals("(") || str.equals(")");
@@ -117,7 +117,7 @@ public class PolandNotation {
 			case '/':
 				return num2 / num1;
 			default:
-				throw new RuntimeException("²»ºÏ·¨µÄÔËËã·û");
+				throw new RuntimeException("ä¸åˆæ³•çš„è¿ç®—ç¬¦");
 		}
 	}
 }
@@ -146,7 +146,7 @@ class Oper {
 				result = DIV;
 				break;
 			default:
-				throw new RuntimeException("²»´æÔÚ¸ÃÔËËã·û" + oper);
+				throw new RuntimeException("ä¸å­˜åœ¨è¯¥è¿ç®—ç¬¦" + oper);
 		}
 
 		return result;

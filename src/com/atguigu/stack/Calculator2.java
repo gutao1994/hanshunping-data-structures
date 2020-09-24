@@ -23,9 +23,9 @@ public class Calculator2 {
 		while (true) {
 			ch = expression.substring(index, index + 1).charAt(0);
 
-			if (isOper(ch)) { //ÊÇÔËËã·û
+			if (isOper(ch)) { //æ˜¯è¿ç®—ç¬¦
 				pushOper(ch, operStack, numStack);
-			} else { //ÊÇÊı×Ö
+			} else { //æ˜¯æ•°å­—
 				keepNum += ch;
 
 				if (
@@ -60,7 +60,7 @@ public class Calculator2 {
 			numStack.push(res);
 		}
 
-		System.out.printf("±í´ïÊ½ %s = %d", expression, numStack.pop());
+		System.out.printf("è¡¨è¾¾å¼ %s = %d", expression, numStack.pop());
 	}
 
 	public static void pushOper(char ch, ArrayStack2<Character> operStack, ArrayStack2<Integer> numStack) {
@@ -93,8 +93,8 @@ public class Calculator2 {
 	}
 
 	/**
-	 * num1 µÚÒ»¸öpop³öÀ´µÄÊı
-	 * num2 µÚ¶ş¸öpop³öÀ´µÄÊı
+	 * num1 ç¬¬ä¸€ä¸ªpopå‡ºæ¥çš„æ•°
+	 * num2 ç¬¬äºŒä¸ªpopå‡ºæ¥çš„æ•°
 	 */
 	public static int cal(int num1, int num2, char oper) {
 		int res = 0;
@@ -143,7 +143,7 @@ class ArrayStack2<T> {
 
 	public void push(T value) {
 		if (this.isFull()) {
-			throw new RuntimeException("Õ»Âú£¬ÎŞ·¨push");
+			throw new RuntimeException("æ ˆæ»¡ï¼Œæ— æ³•push");
 		}
 
 		this.stack[++this.top] = value;
@@ -151,7 +151,7 @@ class ArrayStack2<T> {
 
 	public T pop() {
 		if (this.isEmpty()) {
-			throw new RuntimeException("Õ»¿Õ£¬ÎŞ·¨pop");
+			throw new RuntimeException("æ ˆç©ºï¼Œæ— æ³•pop");
 		}
 
 		return this.stack[this.top--];

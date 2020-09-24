@@ -9,98 +9,98 @@ public class MergetSort {
 	public static void main(String[] args) {
 		//int arr[] = { 8, 4, 5, 7, 1, 3, 6, 2 }; //
 		
-		//²âÊÔ¿ìÅÅµÄÖ´ĞĞËÙ¶È
-		// ´´½¨Òª¸ø80000¸öµÄËæ»úµÄÊı×é
+		//æµ‹è¯•å¿«æ’çš„æ‰§è¡Œé€Ÿåº¦
+		// åˆ›å»ºè¦ç»™80000ä¸ªçš„éšæœºçš„æ•°ç»„
 		int[] arr = new int[8000000];
 		for (int i = 0; i < 8000000; i++) {
-			arr[i] = (int) (Math.random() * 8000000); // Éú³ÉÒ»¸ö[0, 8000000) Êı
+			arr[i] = (int) (Math.random() * 8000000); // ç”Ÿæˆä¸€ä¸ª[0, 8000000) æ•°
 		}
-		System.out.println("ÅÅĞòÇ°");
+		System.out.println("æ’åºå‰");
 		Date data1 = new Date();
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String date1Str = simpleDateFormat.format(data1);
-		System.out.println("ÅÅĞòÇ°µÄÊ±¼äÊÇ=" + date1Str);
+		System.out.println("æ’åºå‰çš„æ—¶é—´æ˜¯=" + date1Str);
 		
-		int temp[] = new int[arr.length]; //¹é²¢ÅÅĞòĞèÒªÒ»¸ö¶îÍâ¿Õ¼ä
+		int temp[] = new int[arr.length]; //å½’å¹¶æ’åºéœ€è¦ä¸€ä¸ªé¢å¤–ç©ºé—´
  		mergeSort(arr, 0, arr.length - 1, temp);
  		
  		Date data2 = new Date();
 		String date2Str = simpleDateFormat.format(data2);
-		System.out.println("ÅÅĞòÇ°µÄÊ±¼äÊÇ=" + date2Str);
+		System.out.println("æ’åºå‰çš„æ—¶é—´æ˜¯=" + date2Str);
  		
- 		//System.out.println("¹é²¢ÅÅĞòºó=" + Arrays.toString(arr));
+ 		//System.out.println("å½’å¹¶æ’åºå=" + Arrays.toString(arr));
 	}
 	
 	
-	//·Ö+ºÏ·½·¨
+	//åˆ†+åˆæ–¹æ³•
 	public static void mergeSort(int[] arr, int left, int right, int[] temp) {
 		if(left < right) {
-			int mid = (left + right) / 2; //ÖĞ¼äË÷Òı
-			//Ïò×óµİ¹é½øĞĞ·Ö½â
+			int mid = (left + right) / 2; //ä¸­é—´ç´¢å¼•
+			//å‘å·¦é€’å½’è¿›è¡Œåˆ†è§£
 			mergeSort(arr, left, mid, temp);
-			//ÏòÓÒµİ¹é½øĞĞ·Ö½â
+			//å‘å³é€’å½’è¿›è¡Œåˆ†è§£
 			mergeSort(arr, mid + 1, right, temp);
-			//ºÏ²¢
+			//åˆå¹¶
 			merge(arr, left, mid, right, temp);
 			
 		}
 	}
 	
-	//ºÏ²¢µÄ·½·¨
+	//åˆå¹¶çš„æ–¹æ³•
 	/**
 	 * 
-	 * @param arr ÅÅĞòµÄÔ­Ê¼Êı×é
-	 * @param left ×ó±ßÓĞĞòĞòÁĞµÄ³õÊ¼Ë÷Òı
-	 * @param mid ÖĞ¼äË÷Òı
-	 * @param right ÓÒ±ßË÷Òı
-	 * @param temp ×öÖĞ×ªµÄÊı×é
+	 * @param arr æ’åºçš„åŸå§‹æ•°ç»„
+	 * @param left å·¦è¾¹æœ‰åºåºåˆ—çš„åˆå§‹ç´¢å¼•
+	 * @param mid ä¸­é—´ç´¢å¼•
+	 * @param right å³è¾¹ç´¢å¼•
+	 * @param temp åšä¸­è½¬çš„æ•°ç»„
 	 */
 	public static void merge(int[] arr, int left, int mid, int right, int[] temp) {
 		
-		int i = left; // ³õÊ¼»¯i, ×ó±ßÓĞĞòĞòÁĞµÄ³õÊ¼Ë÷Òı
-		int j = mid + 1; //³õÊ¼»¯j, ÓÒ±ßÓĞĞòĞòÁĞµÄ³õÊ¼Ë÷Òı
-		int t = 0; // Ö¸ÏòtempÊı×éµÄµ±Ç°Ë÷Òı
+		int i = left; // åˆå§‹åŒ–i, å·¦è¾¹æœ‰åºåºåˆ—çš„åˆå§‹ç´¢å¼•
+		int j = mid + 1; //åˆå§‹åŒ–j, å³è¾¹æœ‰åºåºåˆ—çš„åˆå§‹ç´¢å¼•
+		int t = 0; // æŒ‡å‘tempæ•°ç»„çš„å½“å‰ç´¢å¼•
 		
-		//(Ò»)
-		//ÏÈ°Ñ×óÓÒÁ½±ß(ÓĞĞò)µÄÊı¾İ°´ÕÕ¹æÔòÌî³äµ½tempÊı×é
-		//Ö±µ½×óÓÒÁ½±ßµÄÓĞĞòĞòÁĞ£¬ÓĞÒ»±ß´¦ÀíÍê±ÏÎªÖ¹
-		while (i <= mid && j <= right) {//¼ÌĞø
-			//Èç¹û×ó±ßµÄÓĞĞòĞòÁĞµÄµ±Ç°ÔªËØ£¬Ğ¡ÓÚµÈÓÚÓÒ±ßÓĞĞòĞòÁĞµÄµ±Ç°ÔªËØ
-			//¼´½«×ó±ßµÄµ±Ç°ÔªËØ£¬Ìî³äµ½ tempÊı×é 
-			//È»ºó t++, i++
+		//(ä¸€)
+		//å…ˆæŠŠå·¦å³ä¸¤è¾¹(æœ‰åº)çš„æ•°æ®æŒ‰ç…§è§„åˆ™å¡«å……åˆ°tempæ•°ç»„
+		//ç›´åˆ°å·¦å³ä¸¤è¾¹çš„æœ‰åºåºåˆ—ï¼Œæœ‰ä¸€è¾¹å¤„ç†å®Œæ¯•ä¸ºæ­¢
+		while (i <= mid && j <= right) {//ç»§ç»­
+			//å¦‚æœå·¦è¾¹çš„æœ‰åºåºåˆ—çš„å½“å‰å…ƒç´ ï¼Œå°äºç­‰äºå³è¾¹æœ‰åºåºåˆ—çš„å½“å‰å…ƒç´ 
+			//å³å°†å·¦è¾¹çš„å½“å‰å…ƒç´ ï¼Œå¡«å……åˆ° tempæ•°ç»„ 
+			//ç„¶å t++, i++
 			if(arr[i] <= arr[j]) {
 				temp[t] = arr[i];
 				t += 1;
 				i += 1;
-			} else { //·´Ö®,½«ÓÒ±ßÓĞĞòĞòÁĞµÄµ±Ç°ÔªËØ£¬Ìî³äµ½tempÊı×é
+			} else { //åä¹‹,å°†å³è¾¹æœ‰åºåºåˆ—çš„å½“å‰å…ƒç´ ï¼Œå¡«å……åˆ°tempæ•°ç»„
 				temp[t] = arr[j];
 				t += 1;
 				j += 1;
 			}
 		}
 		
-		//(¶ş)
-		//°ÑÓĞÊ£ÓàÊı¾İµÄÒ»±ßµÄÊı¾İÒÀ´ÎÈ«²¿Ìî³äµ½temp
-		while( i <= mid) { //×ó±ßµÄÓĞĞòĞòÁĞ»¹ÓĞÊ£ÓàµÄÔªËØ£¬¾ÍÈ«²¿Ìî³äµ½temp
+		//(äºŒ)
+		//æŠŠæœ‰å‰©ä½™æ•°æ®çš„ä¸€è¾¹çš„æ•°æ®ä¾æ¬¡å…¨éƒ¨å¡«å……åˆ°temp
+		while( i <= mid) { //å·¦è¾¹çš„æœ‰åºåºåˆ—è¿˜æœ‰å‰©ä½™çš„å…ƒç´ ï¼Œå°±å…¨éƒ¨å¡«å……åˆ°temp
 			temp[t] = arr[i];
 			t += 1;
 			i += 1;	
 		}
 		
-		while( j <= right) { //ÓÒ±ßµÄÓĞĞòĞòÁĞ»¹ÓĞÊ£ÓàµÄÔªËØ£¬¾ÍÈ«²¿Ìî³äµ½temp
+		while( j <= right) { //å³è¾¹çš„æœ‰åºåºåˆ—è¿˜æœ‰å‰©ä½™çš„å…ƒç´ ï¼Œå°±å…¨éƒ¨å¡«å……åˆ°temp
 			temp[t] = arr[j];
 			t += 1;
 			j += 1;	
 		}
 		
 		
-		//(Èı)
-		//½«tempÊı×éµÄÔªËØ¿½±´µ½arr
-		//×¢Òâ£¬²¢²»ÊÇÃ¿´Î¶¼¿½±´ËùÓĞ
+		//(ä¸‰)
+		//å°†tempæ•°ç»„çš„å…ƒç´ æ‹·è´åˆ°arr
+		//æ³¨æ„ï¼Œå¹¶ä¸æ˜¯æ¯æ¬¡éƒ½æ‹·è´æ‰€æœ‰
 		t = 0;
 		int tempLeft = left; // 
-		//µÚÒ»´ÎºÏ²¢ tempLeft = 0 , right = 1 //  tempLeft = 2  right = 3 // tL=0 ri=3
-		//×îºóÒ»´Î tempLeft = 0  right = 7
+		//ç¬¬ä¸€æ¬¡åˆå¹¶ tempLeft = 0 , right = 1 //  tempLeft = 2  right = 3 // tL=0 ri=3
+		//æœ€åä¸€æ¬¡ tempLeft = 0  right = 7
 		while(tempLeft <= right) { 
 			arr[tempLeft] = temp[t];
 			t += 1;

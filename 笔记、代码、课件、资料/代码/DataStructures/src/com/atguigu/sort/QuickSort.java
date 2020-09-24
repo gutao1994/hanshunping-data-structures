@@ -9,75 +9,75 @@ public class QuickSort {
 	public static void main(String[] args) {
 		//int[] arr = {-9,78,0,23,-567,70, -1,900, 4561};
 		
-		//²âÊÔ¿ìÅÅµÄÖ´ĞĞËÙ¶È
-		// ´´½¨Òª¸ø80000¸öµÄËæ»úµÄÊı×é
+		//æµ‹è¯•å¿«æ’çš„æ‰§è¡Œé€Ÿåº¦
+		// åˆ›å»ºè¦ç»™80000ä¸ªçš„éšæœºçš„æ•°ç»„
 		int[] arr = new int[8000000];
 		for (int i = 0; i < 8000000; i++) {
-			arr[i] = (int) (Math.random() * 8000000); // Éú³ÉÒ»¸ö[0, 8000000) Êı
+			arr[i] = (int) (Math.random() * 8000000); // ç”Ÿæˆä¸€ä¸ª[0, 8000000) æ•°
 		}
 		
-		System.out.println("ÅÅĞòÇ°");
+		System.out.println("æ’åºå‰");
 		Date data1 = new Date();
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String date1Str = simpleDateFormat.format(data1);
-		System.out.println("ÅÅĞòÇ°µÄÊ±¼äÊÇ=" + date1Str);
+		System.out.println("æ’åºå‰çš„æ—¶é—´æ˜¯=" + date1Str);
 		
 		quickSort(arr, 0, arr.length-1);
 		
 		Date data2 = new Date();
 		String date2Str = simpleDateFormat.format(data2);
-		System.out.println("ÅÅĞòÇ°µÄÊ±¼äÊÇ=" + date2Str);
+		System.out.println("æ’åºå‰çš„æ—¶é—´æ˜¯=" + date2Str);
 		//System.out.println("arr=" + Arrays.toString(arr));
 	}
 
 	public static void quickSort(int[] arr,int left, int right) {
-		int l = left; //×óÏÂ±ê
-		int r = right; //ÓÒÏÂ±ê
-		//pivot ÖĞÖáÖµ
+		int l = left; //å·¦ä¸‹æ ‡
+		int r = right; //å³ä¸‹æ ‡
+		//pivot ä¸­è½´å€¼
 		int pivot = arr[(left + right) / 2];
-		int temp = 0; //ÁÙÊ±±äÁ¿£¬×÷Îª½»»»Ê±Ê¹ÓÃ
-		//whileÑ­»·µÄÄ¿µÄÊÇÈÃ±Èpivot ÖµĞ¡·Åµ½×ó±ß
-		//±Èpivot Öµ´ó·Åµ½ÓÒ±ß
+		int temp = 0; //ä¸´æ—¶å˜é‡ï¼Œä½œä¸ºäº¤æ¢æ—¶ä½¿ç”¨
+		//whileå¾ªç¯çš„ç›®çš„æ˜¯è®©æ¯”pivot å€¼å°æ”¾åˆ°å·¦è¾¹
+		//æ¯”pivot å€¼å¤§æ”¾åˆ°å³è¾¹
 		while( l < r) { 
-			//ÔÚpivotµÄ×ó±ßÒ»Ö±ÕÒ,ÕÒµ½´óÓÚµÈÓÚpivotÖµ,²ÅÍË³ö
+			//åœ¨pivotçš„å·¦è¾¹ä¸€ç›´æ‰¾,æ‰¾åˆ°å¤§äºç­‰äºpivotå€¼,æ‰é€€å‡º
 			while( arr[l] < pivot) {
 				l += 1;
 			}
-			//ÔÚpivotµÄÓÒ±ßÒ»Ö±ÕÒ,ÕÒµ½Ğ¡ÓÚµÈÓÚpivotÖµ,²ÅÍË³ö
+			//åœ¨pivotçš„å³è¾¹ä¸€ç›´æ‰¾,æ‰¾åˆ°å°äºç­‰äºpivotå€¼,æ‰é€€å‡º
 			while(arr[r] > pivot) {
 				r -= 1;
 			}
-			//Èç¹ûl >= rËµÃ÷pivot µÄ×óÓÒÁ½µÄÖµ£¬ÒÑ¾­°´ÕÕ×ó±ßÈ«²¿ÊÇ
-			//Ğ¡ÓÚµÈÓÚpivotÖµ£¬ÓÒ±ßÈ«²¿ÊÇ´óÓÚµÈÓÚpivotÖµ
+			//å¦‚æœl >= rè¯´æ˜pivot çš„å·¦å³ä¸¤çš„å€¼ï¼Œå·²ç»æŒ‰ç…§å·¦è¾¹å…¨éƒ¨æ˜¯
+			//å°äºç­‰äºpivotå€¼ï¼Œå³è¾¹å…¨éƒ¨æ˜¯å¤§äºç­‰äºpivotå€¼
 			if( l >= r) {
 				break;
 			}
 			
-			//½»»»
+			//äº¤æ¢
 			temp = arr[l];
 			arr[l] = arr[r];
 			arr[r] = temp;
 			
-			//Èç¹û½»»»Íêºó£¬·¢ÏÖÕâ¸öarr[l] == pivotÖµ ÏàµÈ r--£¬ Ç°ÒÆ
+			//å¦‚æœäº¤æ¢å®Œåï¼Œå‘ç°è¿™ä¸ªarr[l] == pivotå€¼ ç›¸ç­‰ r--ï¼Œ å‰ç§»
 			if(arr[l] == pivot) {
 				r -= 1;
 			}
-			//Èç¹û½»»»Íêºó£¬·¢ÏÖÕâ¸öarr[r] == pivotÖµ ÏàµÈ l++£¬ ºóÒÆ
+			//å¦‚æœäº¤æ¢å®Œåï¼Œå‘ç°è¿™ä¸ªarr[r] == pivotå€¼ ç›¸ç­‰ l++ï¼Œ åç§»
 			if(arr[r] == pivot) {
 				l += 1;
 			}
 		}
 		
-		// Èç¹û l == r, ±ØĞël++, r--, ·ñÔòÎª³öÏÖÕ»Òç³ö
+		// å¦‚æœ l == r, å¿…é¡»l++, r--, å¦åˆ™ä¸ºå‡ºç°æ ˆæº¢å‡º
 		if (l == r) {
 			l += 1;
 			r -= 1;
 		}
-		//Ïò×óµİ¹é
+		//å‘å·¦é€’å½’
 		if(left < r) {
 			quickSort(arr, left, r);
 		}
-		//ÏòÓÒµİ¹é
+		//å‘å³é€’å½’
 		if(right > l) {
 			quickSort(arr, l, right);
 		}

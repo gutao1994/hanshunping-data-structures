@@ -12,40 +12,40 @@ public class BubbleSort {
 	public static void main(String[] args) {
 //		int arr[] = {3, 9, -1, 10, 20};
 //		
-//		System.out.println("ÅÅĞòÇ°");
+//		System.out.println("æ’åºå‰");
 //		System.out.println(Arrays.toString(arr));
 		
-		//ÎªÁËÈİÁ¿Àí½â£¬ÎÒÃÇ°ÑÃ°ÅİÅÅĞòµÄÑİ±ä¹ı³Ì£¬¸ø´ó¼ÒÕ¹Ê¾
+		//ä¸ºäº†å®¹é‡ç†è§£ï¼Œæˆ‘ä»¬æŠŠå†’æ³¡æ’åºçš„æ¼”å˜è¿‡ç¨‹ï¼Œç»™å¤§å®¶å±•ç¤º
 		
-		//²âÊÔÒ»ÏÂÃ°ÅİÅÅĞòµÄËÙ¶ÈO(n^2), ¸ø80000¸öÊı¾İ£¬²âÊÔ
-		//´´½¨Òª¸ø80000¸öµÄËæ»úµÄÊı×é
+		//æµ‹è¯•ä¸€ä¸‹å†’æ³¡æ’åºçš„é€Ÿåº¦O(n^2), ç»™80000ä¸ªæ•°æ®ï¼Œæµ‹è¯•
+		//åˆ›å»ºè¦ç»™80000ä¸ªçš„éšæœºçš„æ•°ç»„
 		int[] arr = new int[80000];
 		for(int i =0; i < 80000;i++) {
-			arr[i] = (int)(Math.random() * 8000000); //Éú³ÉÒ»¸ö[0, 8000000) Êı
+			arr[i] = (int)(Math.random() * 8000000); //ç”Ÿæˆä¸€ä¸ª[0, 8000000) æ•°
 		}
 		
 		Date data1 = new Date();
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String date1Str = simpleDateFormat.format(data1);
-		System.out.println("ÅÅĞòÇ°µÄÊ±¼äÊÇ=" + date1Str);
+		System.out.println("æ’åºå‰çš„æ—¶é—´æ˜¯=" + date1Str);
 		
-		//²âÊÔÃ°ÅİÅÅĞò
+		//æµ‹è¯•å†’æ³¡æ’åº
 		bubbleSort(arr);
 		
 		Date data2 = new Date();
 		String date2Str = simpleDateFormat.format(data2);
-		System.out.println("ÅÅĞòºóµÄÊ±¼äÊÇ=" + date2Str);
+		System.out.println("æ’åºåçš„æ—¶é—´æ˜¯=" + date2Str);
 		
-		//System.out.println("ÅÅĞòºó");
+		//System.out.println("æ’åºå");
 		//System.out.println(Arrays.toString(arr));
 		
 		
 		/*
 		
-		// µÚ¶şÌËÅÅĞò£¬¾ÍÊÇ½«µÚ¶ş´óµÄÊıÅÅÔÚµ¹ÊıµÚ¶şÎ»
+		// ç¬¬äºŒè¶Ÿæ’åºï¼Œå°±æ˜¯å°†ç¬¬äºŒå¤§çš„æ•°æ’åœ¨å€’æ•°ç¬¬äºŒä½
 		
 		for (int j = 0; j < arr.length - 1 - 1 ; j++) {
-			// Èç¹ûÇ°ÃæµÄÊı±ÈºóÃæµÄÊı´ó£¬Ôò½»»»
+			// å¦‚æœå‰é¢çš„æ•°æ¯”åé¢çš„æ•°å¤§ï¼Œåˆ™äº¤æ¢
 			if (arr[j] > arr[j + 1]) {
 				temp = arr[j];
 				arr[j] = arr[j + 1];
@@ -53,14 +53,14 @@ public class BubbleSort {
 			}
 		}
 		
-		System.out.println("µÚ¶şÌËÅÅĞòºóµÄÊı×é");
+		System.out.println("ç¬¬äºŒè¶Ÿæ’åºåçš„æ•°ç»„");
 		System.out.println(Arrays.toString(arr));
 		
 		
-		// µÚÈıÌËÅÅĞò£¬¾ÍÊÇ½«µÚÈı´óµÄÊıÅÅÔÚµ¹ÊıµÚÈıÎ»
+		// ç¬¬ä¸‰è¶Ÿæ’åºï¼Œå°±æ˜¯å°†ç¬¬ä¸‰å¤§çš„æ•°æ’åœ¨å€’æ•°ç¬¬ä¸‰ä½
 		
 		for (int j = 0; j < arr.length - 1 - 2; j++) {
-			// Èç¹ûÇ°ÃæµÄÊı±ÈºóÃæµÄÊı´ó£¬Ôò½»»»
+			// å¦‚æœå‰é¢çš„æ•°æ¯”åé¢çš„æ•°å¤§ï¼Œåˆ™äº¤æ¢
 			if (arr[j] > arr[j + 1]) {
 				temp = arr[j];
 				arr[j] = arr[j + 1];
@@ -68,13 +68,13 @@ public class BubbleSort {
 			}
 		}
 
-		System.out.println("µÚÈıÌËÅÅĞòºóµÄÊı×é");
+		System.out.println("ç¬¬ä¸‰è¶Ÿæ’åºåçš„æ•°ç»„");
 		System.out.println(Arrays.toString(arr));
 		
-		// µÚËÄÌËÅÅĞò£¬¾ÍÊÇ½«µÚ4´óµÄÊıÅÅÔÚµ¹ÊıµÚ4Î»
+		// ç¬¬å››è¶Ÿæ’åºï¼Œå°±æ˜¯å°†ç¬¬4å¤§çš„æ•°æ’åœ¨å€’æ•°ç¬¬4ä½
 
 		for (int j = 0; j < arr.length - 1 - 3; j++) {
-			// Èç¹ûÇ°ÃæµÄÊı±ÈºóÃæµÄÊı´ó£¬Ôò½»»»
+			// å¦‚æœå‰é¢çš„æ•°æ¯”åé¢çš„æ•°å¤§ï¼Œåˆ™äº¤æ¢
 			if (arr[j] > arr[j + 1]) {
 				temp = arr[j];
 				arr[j] = arr[j + 1];
@@ -82,20 +82,20 @@ public class BubbleSort {
 			}
 		}
 
-		System.out.println("µÚËÄÌËÅÅĞòºóµÄÊı×é");
+		System.out.println("ç¬¬å››è¶Ÿæ’åºåçš„æ•°ç»„");
 		System.out.println(Arrays.toString(arr)); */
 		
 	}
 	
-	// ½«Ç°Ãæ¶îÃ°ÅİÅÅĞòËã·¨£¬·â×°³ÉÒ»¸ö·½·¨
+	// å°†å‰é¢é¢å†’æ³¡æ’åºç®—æ³•ï¼Œå°è£…æˆä¸€ä¸ªæ–¹æ³•
 	public static void bubbleSort(int[] arr) {
-		// Ã°ÅİÅÅĞò µÄÊ±¼ä¸´ÔÓ¶È O(n^2), ×Ô¼ºĞ´³ö
-		int temp = 0; // ÁÙÊ±±äÁ¿
-		boolean flag = false; // ±êÊ¶±äÁ¿£¬±íÊ¾ÊÇ·ñ½øĞĞ¹ı½»»»
+		// å†’æ³¡æ’åº çš„æ—¶é—´å¤æ‚åº¦ O(n^2), è‡ªå·±å†™å‡º
+		int temp = 0; // ä¸´æ—¶å˜é‡
+		boolean flag = false; // æ ‡è¯†å˜é‡ï¼Œè¡¨ç¤ºæ˜¯å¦è¿›è¡Œè¿‡äº¤æ¢
 		for (int i = 0; i < arr.length - 1; i++) {
 
 			for (int j = 0; j < arr.length - 1 - i; j++) {
-				// Èç¹ûÇ°ÃæµÄÊı±ÈºóÃæµÄÊı´ó£¬Ôò½»»»
+				// å¦‚æœå‰é¢çš„æ•°æ¯”åé¢çš„æ•°å¤§ï¼Œåˆ™äº¤æ¢
 				if (arr[j] > arr[j + 1]) {
 					flag = true;
 					temp = arr[j];
@@ -103,13 +103,13 @@ public class BubbleSort {
 					arr[j + 1] = temp;
 				}
 			}
-			//System.out.println("µÚ" + (i + 1) + "ÌËÅÅĞòºóµÄÊı×é");
+			//System.out.println("ç¬¬" + (i + 1) + "è¶Ÿæ’åºåçš„æ•°ç»„");
 			//System.out.println(Arrays.toString(arr));
 
-			if (!flag) { // ÔÚÒ»ÌËÅÅĞòÖĞ£¬Ò»´Î½»»»¶¼Ã»ÓĞ·¢Éú¹ı
+			if (!flag) { // åœ¨ä¸€è¶Ÿæ’åºä¸­ï¼Œä¸€æ¬¡äº¤æ¢éƒ½æ²¡æœ‰å‘ç”Ÿè¿‡
 				break;
 			} else {
-				flag = false; // ÖØÖÃflag!!!, ½øĞĞÏÂ´ÎÅĞ¶Ï
+				flag = false; // é‡ç½®flag!!!, è¿›è¡Œä¸‹æ¬¡åˆ¤æ–­
 			}
 		}
 	}
