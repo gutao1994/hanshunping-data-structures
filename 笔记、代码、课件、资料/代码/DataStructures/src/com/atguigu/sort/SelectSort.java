@@ -3,132 +3,132 @@ package com.atguigu.sort;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
-//Ñ¡ÔñÅÅĞò
+//é€‰æ‹©æ’åº
 public class SelectSort {
 
 	public static void main(String[] args) {
 		//int [] arr = {101, 34, 119, 1, -1, 90, 123};
 		
-		//´´½¨Òª¸ø80000¸öµÄËæ»úµÄÊı×é
+		//åˆ›å»ºè¦ç»™80000ä¸ªçš„éšæœºçš„æ•°ç»„
 		int[] arr = new int[80000];
 		for (int i = 0; i < 80000; i++) {
-			arr[i] = (int) (Math.random() * 8000000); // Éú³ÉÒ»¸ö[0, 8000000) Êı
+			arr[i] = (int) (Math.random() * 8000000); // ç”Ÿæˆä¸€ä¸ª[0, 8000000) æ•°
 		}
 		
-		System.out.println("ÅÅĞòÇ°");
+		System.out.println("æ’åºå‰");
 		//System.out.println(Arrays.toString(arr));
 		
 		Date data1 = new Date();
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String date1Str = simpleDateFormat.format(data1);
-		System.out.println("ÅÅĞòÇ°µÄÊ±¼äÊÇ=" + date1Str);
+		System.out.println("æ’åºå‰çš„æ—¶é—´æ˜¯=" + date1Str);
 		
 		selectSort(arr);
 		
 		
 		Date data2 = new Date();
 		String date2Str = simpleDateFormat.format(data2);
-		System.out.println("ÅÅĞòÇ°µÄÊ±¼äÊÇ=" + date2Str);
+		System.out.println("æ’åºå‰çš„æ—¶é—´æ˜¯=" + date2Str);
 		
-		//System.out.println("ÅÅĞòºó");
+		//System.out.println("æ’åºå");
 		//System.out.println(Arrays.toString(arr));
 		
 		
 	}
 	
-	//Ñ¡ÔñÅÅĞò
+	//é€‰æ‹©æ’åº
 	public static void selectSort(int[] arr) {
 		
 		
 		
-		//ÔÚÍÆµ¼µÄ¹ı³Ì£¬ÎÒÃÇ·¢ÏÖÁË¹æÂÉ£¬Òò´Ë£¬¿ÉÒÔÊ¹ÓÃforÀ´½â¾ö
-		//Ñ¡ÔñÅÅĞòÊ±¼ä¸´ÔÓ¶ÈÊÇ O(n^2)
+		//åœ¨æ¨å¯¼çš„è¿‡ç¨‹ï¼Œæˆ‘ä»¬å‘ç°äº†è§„å¾‹ï¼Œå› æ­¤ï¼Œå¯ä»¥ä½¿ç”¨foræ¥è§£å†³
+		//é€‰æ‹©æ’åºæ—¶é—´å¤æ‚åº¦æ˜¯ O(n^2)
 		for (int i = 0; i < arr.length - 1; i++) {
 			int minIndex = i;
 			int min = arr[i];
 			for (int j = i + 1; j < arr.length; j++) {
-				if (min > arr[j]) { // ËµÃ÷¼Ù¶¨µÄ×îĞ¡Öµ£¬²¢²»ÊÇ×îĞ¡
-					min = arr[j]; // ÖØÖÃmin
-					minIndex = j; // ÖØÖÃminIndex
+				if (min > arr[j]) { // è¯´æ˜å‡å®šçš„æœ€å°å€¼ï¼Œå¹¶ä¸æ˜¯æœ€å°
+					min = arr[j]; // é‡ç½®min
+					minIndex = j; // é‡ç½®minIndex
 				}
 			}
 
-			// ½«×îĞ¡Öµ£¬·ÅÔÚarr[0], ¼´½»»»
+			// å°†æœ€å°å€¼ï¼Œæ”¾åœ¨arr[0], å³äº¤æ¢
 			if (minIndex != i) {
 				arr[minIndex] = arr[i];
 				arr[i] = min;
 			}
 
-			//System.out.println("µÚ"+(i+1)+"ÂÖºó~~");
+			//System.out.println("ç¬¬"+(i+1)+"è½®å~~");
 			//System.out.println(Arrays.toString(arr));// 1, 34, 119, 101
 		}
 		
 		
 		/*
 		
-		//Ê¹ÓÃÖğ²½ÍÆµ¼µÄ·½Ê½À´£¬½²½âÑ¡ÔñÅÅĞò
-		//µÚ1ÂÖ
-		//Ô­Ê¼µÄÊı×é £º 	101, 34, 119, 1
-		//µÚÒ»ÂÖÅÅĞò :   	1, 34, 119, 101
-		//Ëã·¨ ÏÈ¼òµ¥--¡· ×ö¸´ÔÓ£¬ ¾ÍÊÇ¿ÉÒÔ°ÑÒ»¸ö¸´ÔÓµÄËã·¨£¬²ğ·Ö³É¼òµ¥µÄÎÊÌâ-¡·Öğ²½½â¾ö
+		//ä½¿ç”¨é€æ­¥æ¨å¯¼çš„æ–¹å¼æ¥ï¼Œè®²è§£é€‰æ‹©æ’åº
+		//ç¬¬1è½®
+		//åŸå§‹çš„æ•°ç»„ ï¼š 	101, 34, 119, 1
+		//ç¬¬ä¸€è½®æ’åº :   	1, 34, 119, 101
+		//ç®—æ³• å…ˆç®€å•--ã€‹ åšå¤æ‚ï¼Œ å°±æ˜¯å¯ä»¥æŠŠä¸€ä¸ªå¤æ‚çš„ç®—æ³•ï¼Œæ‹†åˆ†æˆç®€å•çš„é—®é¢˜-ã€‹é€æ­¥è§£å†³
 		
-		//µÚ1ÂÖ
+		//ç¬¬1è½®
 		int minIndex = 0;
 		int min = arr[0];
 		for(int j = 0 + 1; j < arr.length; j++) {
-			if (min > arr[j]) { //ËµÃ÷¼Ù¶¨µÄ×îĞ¡Öµ£¬²¢²»ÊÇ×îĞ¡
-				min = arr[j]; //ÖØÖÃmin
-				minIndex = j; //ÖØÖÃminIndex
+			if (min > arr[j]) { //è¯´æ˜å‡å®šçš„æœ€å°å€¼ï¼Œå¹¶ä¸æ˜¯æœ€å°
+				min = arr[j]; //é‡ç½®min
+				minIndex = j; //é‡ç½®minIndex
 			}
 		}
 		
 		
-		//½«×îĞ¡Öµ£¬·ÅÔÚarr[0], ¼´½»»»
+		//å°†æœ€å°å€¼ï¼Œæ”¾åœ¨arr[0], å³äº¤æ¢
 		if(minIndex != 0) {
 			arr[minIndex] = arr[0];
 			arr[0] = min;
 		}
 		
-		System.out.println("µÚ1ÂÖºó~~");
+		System.out.println("ç¬¬1è½®å~~");
 		System.out.println(Arrays.toString(arr));// 1, 34, 119, 101
 		
 		
-		//µÚ2ÂÖ
+		//ç¬¬2è½®
 		minIndex = 1;
 		min = arr[1];
 		for (int j = 1 + 1; j < arr.length; j++) {
-			if (min > arr[j]) { // ËµÃ÷¼Ù¶¨µÄ×îĞ¡Öµ£¬²¢²»ÊÇ×îĞ¡
-				min = arr[j]; // ÖØÖÃmin
-				minIndex = j; // ÖØÖÃminIndex
+			if (min > arr[j]) { // è¯´æ˜å‡å®šçš„æœ€å°å€¼ï¼Œå¹¶ä¸æ˜¯æœ€å°
+				min = arr[j]; // é‡ç½®min
+				minIndex = j; // é‡ç½®minIndex
 			}
 		}
 
-		// ½«×îĞ¡Öµ£¬·ÅÔÚarr[0], ¼´½»»»
+		// å°†æœ€å°å€¼ï¼Œæ”¾åœ¨arr[0], å³äº¤æ¢
 		if(minIndex != 1) {
 			arr[minIndex] = arr[1];
 			arr[1] = min;
 		}
 
-		System.out.println("µÚ2ÂÖºó~~");
+		System.out.println("ç¬¬2è½®å~~");
 		System.out.println(Arrays.toString(arr));// 1, 34, 119, 101
 		
-		//µÚ3ÂÖ
+		//ç¬¬3è½®
 		minIndex = 2;
 		min = arr[2];
 		for (int j = 2 + 1; j < arr.length; j++) {
-			if (min > arr[j]) { // ËµÃ÷¼Ù¶¨µÄ×îĞ¡Öµ£¬²¢²»ÊÇ×îĞ¡
-				min = arr[j]; // ÖØÖÃmin
-				minIndex = j; // ÖØÖÃminIndex
+			if (min > arr[j]) { // è¯´æ˜å‡å®šçš„æœ€å°å€¼ï¼Œå¹¶ä¸æ˜¯æœ€å°
+				min = arr[j]; // é‡ç½®min
+				minIndex = j; // é‡ç½®minIndex
 			}
 		}
 
-		// ½«×îĞ¡Öµ£¬·ÅÔÚarr[0], ¼´½»»»
+		// å°†æœ€å°å€¼ï¼Œæ”¾åœ¨arr[0], å³äº¤æ¢
 		if (minIndex != 2) {
 			arr[minIndex] = arr[2];
 			arr[2] = min;
 		}
 
-		System.out.println("µÚ3ÂÖºó~~");
+		System.out.println("ç¬¬3è½®å~~");
 		System.out.println(Arrays.toString(arr));// 1, 34, 101, 119 */
 
 		
