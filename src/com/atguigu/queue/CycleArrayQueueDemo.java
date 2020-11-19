@@ -14,7 +14,7 @@ public class CycleArrayQueueDemo {
 		boolean loop = true;
 
 		while (loop) {
-			System.out.println("s(show): ÏÔÊ¾¶ÓÁÐ\te(exit): ÍË³ö³ÌÐò\ta(add): Ìí¼ÓÊý¾Ýµ½¶ÓÁÐ\tg(get): ´Ó¶ÓÁÐÈ¡³öÊý¾Ý\th(head): ²é¿´¶ÓÁÐÍ·µÄÊý¾Ý");
+			System.out.println("s(show): æ˜¾ç¤ºé˜Ÿåˆ—\te(exit): é€€å‡ºç¨‹åº\ta(add): æ·»åŠ æ•°æ®åˆ°é˜Ÿåˆ—\tg(get): ä»Žé˜Ÿåˆ—å–å‡ºæ•°æ®\th(head): æŸ¥çœ‹é˜Ÿåˆ—å¤´çš„æ•°æ®");
 
 			key = scanner.next().charAt(0);
 
@@ -23,7 +23,7 @@ public class CycleArrayQueueDemo {
 				cycleArrayQueue.showQueue();
 				break;
 			case 'a':
-				System.out.println("ÊäÈëÒ»¸öÊý");
+				System.out.println("è¾“å…¥ä¸€ä¸ªæ•°");
 
 				try {
 					int res = scanner.nextInt();
@@ -57,7 +57,7 @@ public class CycleArrayQueueDemo {
 		}
 
 		scanner.close();
-		System.out.println("³ÌÐòÍË³ö~~");
+		System.out.println("ç¨‹åºé€€å‡º~~");
 	}
 }
 

@@ -26,7 +26,7 @@ public class MergeSort {
             //向左递归分解
             mergeSort(arr, left, mid, temp);
 
-            //向左递归分解
+            //向右递归分解
             mergeSort(arr, mid + 1, right, temp);
 
             merge(arr, left, mid, right, temp);

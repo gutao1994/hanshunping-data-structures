@@ -4,10 +4,10 @@ public class DoubleLinkedListDemo {
 
 	public static void main(String[] args) {
 
-		HeroNode2 hero1 = new HeroNode2(1, "ËÎ½­", "¼°Ê±Óê");
-		HeroNode2 hero2 = new HeroNode2(2, "Â¬¿¡Òå", "Óñ÷è÷ë");
-		HeroNode2 hero3 = new HeroNode2(3, "ÎâÓÃ", "ÖÇ¶àĞÇ");
-		HeroNode2 hero4 = new HeroNode2(4, "ÁÖ³å", "±ª×ÓÍ·");
+		HeroNode2 hero1 = new HeroNode2(1, "å®‹æ±Ÿ", "åŠæ—¶é›¨");
+		HeroNode2 hero2 = new HeroNode2(2, "å¢ä¿Šä¹‰", "ç‰éº’éºŸ");
+		HeroNode2 hero3 = new HeroNode2(3, "å´ç”¨", "æ™ºå¤šæ˜Ÿ");
+		HeroNode2 hero4 = new HeroNode2(4, "æ—å†²", "è±¹å­å¤´");
 
 		DoubleLinkedList doubleLinkedList = new DoubleLinkedList();
 
@@ -88,7 +88,7 @@ class DoubleLinkedList {
 	}
 
 	/**
-	 * Ìí¼Óµ½Ä©Î²
+	 * æ·»åŠ åˆ°æœ«å°¾
 	 */
 	public void addToRear (HeroNode2 newHeroNode) {
 		HeroNode2 cur = head;
@@ -106,7 +106,7 @@ class DoubleLinkedList {
 	}
 
 	/**
-	 * °´Ë³ĞòÌí¼Ó
+	 * æŒ‰é¡ºåºæ·»åŠ 
 	 */
 	public void addByOrder (HeroNode2 newHeroNode) {
 		HeroNode2 cur = head;
@@ -131,7 +131,7 @@ class DoubleLinkedList {
 		}
 
 		if (flag) {
-			System.out.printf("´æÔÚÏàÍ¬½Úµã:%d£¬ÎŞ·¨Ìí¼Ó\n", newHeroNode.no);
+			System.out.printf("å­˜åœ¨ç›¸åŒèŠ‚ç‚¹:%dï¼Œæ— æ³•æ·»åŠ \n", newHeroNode.no);
 		} else {
 			newHeroNode.next = cur.next;
 			cur.next = newHeroNode;
@@ -147,11 +147,11 @@ class DoubleLinkedList {
 	public void update(HeroNode2 newHeroNode) {
 		HeroNode2 temp = head.next;
 
-		boolean flag = false; //±íÊ¾ÊÇ·ñÕÒµ½¸Ã½Úµã
+		boolean flag = false; //è¡¨ç¤ºæ˜¯å¦æ‰¾åˆ°è¯¥èŠ‚ç‚¹
 
 		while (true) {
 			if (temp == null) {
-				break; //ÒÑ¾­±éÀúÍêÁ´±í
+				break; //å·²ç»éå†å®Œé“¾è¡¨
 			}
 
 			if (newHeroNode.no == temp.no) {
@@ -165,8 +165,8 @@ class DoubleLinkedList {
 		if (flag) {
 			temp.name = newHeroNode.name;
 			temp.nickname = newHeroNode.nickname;
-		} else { // Ã»ÓĞÕÒµ½
-			System.out.printf("Ã»ÓĞÕÒµ½ ±àºÅ %d µÄ½Úµã£¬²»ÄÜĞŞ¸Ä\n", newHeroNode.no);
+		} else { // æ²¡æœ‰æ‰¾åˆ°
+			System.out.printf("æ²¡æœ‰æ‰¾åˆ° ç¼–å· %d çš„èŠ‚ç‚¹ï¼Œä¸èƒ½ä¿®æ”¹\n", newHeroNode.no);
 		}
 	}
 
@@ -195,7 +195,7 @@ class DoubleLinkedList {
 				cur.next.pre = cur.pre;
 			}
 		} else {
-			System.out.printf("½Úµã%d²»´æÔÚ\n", no);
+			System.out.printf("èŠ‚ç‚¹%dä¸å­˜åœ¨\n", no);
 		}
 	}
 
@@ -232,8 +232,8 @@ class HeroNode2 {
 	public int no;
 	public String name;
 	public String nickname;
-	public HeroNode2 next; // Ö¸ÏòÏÂÒ»¸ö½Úµã, Ä¬ÈÏÎªnull
-	public HeroNode2 pre; // Ö¸ÏòÇ°Ò»¸ö½Úµã, Ä¬ÈÏÎªnull
+	public HeroNode2 next; // æŒ‡å‘ä¸‹ä¸€ä¸ªèŠ‚ç‚¹, é»˜è®¤ä¸ºnull
+	public HeroNode2 pre; // æŒ‡å‘å‰ä¸€ä¸ªèŠ‚ç‚¹, é»˜è®¤ä¸ºnull
 
 	public HeroNode2(int no, String name, String nickname) {
 		this.no = no;

@@ -6,10 +6,10 @@ public class SingleLinkedListDemo {
 
 	public static void main(String[] args) {
 
-		HeroNode hero1 = new HeroNode(1, "ËÎ½­", "¼°Ê±Óê");
-		HeroNode hero2 = new HeroNode(2, "Â¬¿¡Òå", "Óñ÷è÷ë");
-		HeroNode hero3 = new HeroNode(3, "ÎâÓÃ", "ÖÇ¶àĞÇ");
-		HeroNode hero4 = new HeroNode(4, "ÁÖ³å", "±ª×ÓÍ·");
+		HeroNode hero1 = new HeroNode(1, "å®‹æ±Ÿ", "åŠæ—¶é›¨");
+		HeroNode hero2 = new HeroNode(2, "å¢ä¿Šä¹‰", "ç‰éº’éºŸ");
+		HeroNode hero3 = new HeroNode(3, "å´ç”¨", "æ™ºå¤šæ˜Ÿ");
+		HeroNode hero4 = new HeroNode(4, "æ—å†²", "è±¹å­å¤´");
 
 
 		SingleLinkedList singleLinkedList = new SingleLinkedList();
@@ -27,12 +27,12 @@ public class SingleLinkedListDemo {
 		singleLinkedList.list();
 		System.out.println();
 
-		System.out.println("·´×ªµ¥Á´±í~~");
+		System.out.println("åè½¬å•é“¾è¡¨~~");
 		reversetList(singleLinkedList.getHead());
 		singleLinkedList.list();
 		System.out.println();
 
-//		System.out.println("²âÊÔÄæĞò´òÓ¡µ¥Á´±í, Ã»ÓĞ¸Ä±äÁ´±íµÄ½á¹¹~~");
+//		System.out.println("æµ‹è¯•é€†åºæ‰“å°å•é“¾è¡¨, æ²¡æœ‰æ”¹å˜é“¾è¡¨çš„ç»“æ„~~");
 //		reversePrint(singleLinkedList.getHead());
 //		System.out.println();
 
@@ -40,7 +40,7 @@ public class SingleLinkedListDemo {
 		System.out.println();
 
 
-//		singleLinkedList.update(new HeroNode(2, "Ğ¡Â¬", "Óñ÷è÷ë~~"));
+//		singleLinkedList.update(new HeroNode(2, "å°å¢", "ç‰éº’éºŸ~~"));
 //
 //		singleLinkedList.list();
 //		System.out.println();
@@ -54,7 +54,7 @@ public class SingleLinkedListDemo {
 	}
 
 	/**
-	 * ½«µ¥Á´±í·´×ª´òÓ¡£¬²»¿ÉÆÆ»µÔ­À´µÄÁ´±í½á¹¹
+	 * å°†å•é“¾è¡¨åè½¬æ‰“å°ï¼Œä¸å¯ç ´ååŸæ¥çš„é“¾è¡¨ç»“æ„
 	 */
 	public static void reversePrint(HeroNode head) {
 		HeroNode cur = head.next;
@@ -72,7 +72,7 @@ public class SingleLinkedListDemo {
 	}
 
 	/**
-	 * ½«µ¥Á´±í·´×ª
+	 * å°†å•é“¾è¡¨åè½¬
 	 */
 	public static void reversetList(HeroNode head) {
 		HeroNode reverseHead = new HeroNode(0, "", "");
@@ -92,7 +92,7 @@ public class SingleLinkedListDemo {
 	}
 
 	/**
-	 * ²éÕÒµ¥Á´±íÖĞµÄµ¹ÊıµÚindex¸ö½áµã ¡¾ĞÂÀËÃæÊÔÌâ¡¿
+	 * æŸ¥æ‰¾å•é“¾è¡¨ä¸­çš„å€’æ•°ç¬¬indexä¸ªç»“ç‚¹ ã€æ–°æµªé¢è¯•é¢˜ã€‘
 	 */
 	public static HeroNode findLastIndexNode(HeroNode head, int index) {
 		int length = getLength(head);
@@ -110,7 +110,7 @@ public class SingleLinkedListDemo {
 	}
 
 	/**
-	 * ·µ»ØµÄ¾ÍÊÇÓĞĞ§½ÚµãµÄ¸öÊı
+	 * è¿”å›çš„å°±æ˜¯æœ‰æ•ˆèŠ‚ç‚¹çš„ä¸ªæ•°
 	 */
 	public static int getLength(HeroNode head) {
 		HeroNode cur = head.next;
@@ -137,7 +137,7 @@ class SingleLinkedList {
 	}
 
 	/**
-	 * Ìí¼Óµ½Ä©Î²
+	 * æ·»åŠ åˆ°æœ«å°¾
 	 */
 	public void addToRear (HeroNode newHeroNode) {
 		HeroNode tmp = this.head;
@@ -154,12 +154,12 @@ class SingleLinkedList {
 	}
 
 	/**
-	 * °´Ë³ĞòÌí¼Ó
+	 * æŒ‰é¡ºåºæ·»åŠ 
 	 */
 	public void addByOrder (HeroNode newHeroNode) {
 		HeroNode tmp = this.head;
 
-		boolean flag = false; //ÊÇ·ñ´æÔÚÏàÍ¬noµÄ½Úµã
+		boolean flag = false; //æ˜¯å¦å­˜åœ¨ç›¸åŒnoçš„èŠ‚ç‚¹
 
 		while (true) {
 			if (tmp.next == null) {
@@ -179,7 +179,7 @@ class SingleLinkedList {
 		}
 
 		if (flag) {
-			System.out.printf("´æÔÚÏàÍ¬½Úµã:%d£¬ÎŞ·¨Ìí¼Ó\n", newHeroNode.no);
+			System.out.printf("å­˜åœ¨ç›¸åŒèŠ‚ç‚¹:%dï¼Œæ— æ³•æ·»åŠ \n", newHeroNode.no);
 		} else {
 			newHeroNode.next = tmp.next;
 			tmp.next = newHeroNode;
@@ -208,7 +208,7 @@ class SingleLinkedList {
 			tmp.name = newHeroNode.name;
 			tmp.nickname = newHeroNode.nickname;
 		} else {
-			System.out.printf("Ã»ÓĞÕÒµ½ ±àºÅ %d µÄ½Úµã£¬²»ÄÜĞŞ¸Ä\n", newHeroNode.no);
+			System.out.printf("æ²¡æœ‰æ‰¾åˆ° ç¼–å· %d çš„èŠ‚ç‚¹ï¼Œä¸èƒ½ä¿®æ”¹\n", newHeroNode.no);
 		}
 	}
 
@@ -233,7 +233,7 @@ class SingleLinkedList {
 		if (hasNode) {
 			tmp.next = tmp.next.next;
 		} else {
-			System.out.printf("ÒªÉ¾³ıµÄ %d ½Úµã²»´æÔÚ\n", no);
+			System.out.printf("è¦åˆ é™¤çš„ %d èŠ‚ç‚¹ä¸å­˜åœ¨\n", no);
 		}
 	}
 
