@@ -6,6 +6,11 @@ public class SequenceSearch {
 
     }
 
+    public static int seqSearch(int[] arr, int val) {
+
+        return -1;
+    }
+
 
 
 }

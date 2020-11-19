@@ -3,23 +3,23 @@ package com.atguigu.search;
 public class SeqSearch {
 
 	public static void main(String[] args) {
-		int arr[] = { 1, 9, 11, -1, 34, 89 };// Ã»ÓĞË³ĞòµÄÊı×é
+		int arr[] = { 1, 9, 11, -1, 34, 89 };// æ²¡æœ‰é¡ºåºçš„æ•°ç»„
 		int index = seqSearch(arr, -11);
 		if(index == -1) {
-			System.out.println("Ã»ÓĞÕÒµ½µ½");
+			System.out.println("æ²¡æœ‰æ‰¾åˆ°åˆ°");
 		} else {
-			System.out.println("ÕÒµ½£¬ÏÂ±êÎª=" + index);
+			System.out.println("æ‰¾åˆ°ï¼Œä¸‹æ ‡ä¸º=" + index);
 		}
 	}
 
 	/**
-	 * ÕâÀïÎÒÃÇÊµÏÖµÄÏßĞÔ²éÕÒÊÇÕÒµ½Ò»¸öÂú×ãÌõ¼şµÄÖµ£¬¾Í·µ»Ø
+	 * è¿™é‡Œæˆ‘ä»¬å®ç°çš„çº¿æ€§æŸ¥æ‰¾æ˜¯æ‰¾åˆ°ä¸€ä¸ªæ»¡è¶³æ¡ä»¶çš„å€¼ï¼Œå°±è¿”å›
 	 * @param arr
 	 * @param value
 	 * @return
 	 */
 	public static int seqSearch(int[] arr, int value) {
-		// ÏßĞÔ²éÕÒÊÇÖğÒ»±È¶Ô£¬·¢ÏÖÓĞÏàÍ¬Öµ£¬¾Í·µ»ØÏÂ±ê
+		// çº¿æ€§æŸ¥æ‰¾æ˜¯é€ä¸€æ¯”å¯¹ï¼Œå‘ç°æœ‰ç›¸åŒå€¼ï¼Œå°±è¿”å›ä¸‹æ ‡
 		for (int i = 0; i < arr.length; i++) {
 			if(arr[i] == value) {
 				return i;
