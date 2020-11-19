@@ -9,26 +9,28 @@ import java.util.List;
 public class BinarySearch {
 
     public static void main(String[] args) {
-//        int num = 1000000;
-//        int arr[] = SearchHelp.genSortArr(num);
+        int num = 1000000;
+        int arr[] = SearchHelp.genSortArr(num);
 //        System.out.println(Arrays.toString(arr));
 
 //        SortHelp.printBeforeTime();
-//        int index = binarySearch(arr, 0, num - 1, arr[302]);
+        int index = binarySearch(arr, 0, arr.length - 1, arr[18450]);
 //        SortHelp.printAfterTime();
-//
-//        if (index == -1) {
-//            System.out.println("没有找到");
-//        } else {
-//            System.out.println("找到，下标为=" + index);
-//        }
 
-        int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 , 11, 12, 13, 13, 13, 13, 15, 16, 17, 18, 19, 20};
-        List<Integer> indexList = binarySearchAll(arr, 0, arr.length - 1, 13);
-        System.out.println("resIndexList=" + indexList);
+        if (index == -1) {
+            System.out.println("没有找到");
+        } else {
+            System.out.println("找到，下标为=" + index);
+        }
+
+//        int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 , 11, 12, 13, 13, 13, 13, 15, 16, 17, 18, 19, 20};
+//        List<Integer> indexList = binarySearchAll(arr, 0, arr.length - 1, 13);
+//        System.out.println("resIndexList=" + indexList);
     }
 
     public static int binarySearch(int[] arr, int left, int right, int val) {
+        System.out.println("哈哈哈");
+
         if (left > right) {
             return  -1;
         }

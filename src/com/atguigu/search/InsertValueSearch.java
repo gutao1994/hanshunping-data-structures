@@ -4,10 +4,13 @@ import java.util.Arrays;
 
 public class InsertValueSearch {
 
+    public static int total;
+
     public static void main(String[] args) {
-        int arr[] = SearchHelp.genSortArr(1000);
+        int arr[] = SearchHelp.genSortArr(10000000);
 //        System.out.println(Arrays.toString(arr));
-        int findVal = arr[520];
+//        System.out.println(arr[arr.length - 1]);
+        int findVal = 10000;
 
         int index = insertValueSearch(arr, 0, arr.length - 1, findVal);
 //        int index = insertValueSearchError(arr, 0, arr.length - 1, findVal);
@@ -15,6 +18,8 @@ public class InsertValueSearch {
     }
 
     public static int insertValueSearch(int[] arr, int left, int right, int val) {
+        System.out.println("哈哈哈");
+
         if (left > right || val < arr[left] || val > arr[right]) {
             return -1;
         }
@@ -23,7 +28,8 @@ public class InsertValueSearch {
             return left;
         }
 
-        int mid = left + (right - left) * (val - arr[left]) / (arr[right] - arr[left]);
+        float rate = (float)(val - arr[left]) / (float)(arr[right] - arr[left]);
+        int mid = left + (int)((right - left) * rate);
         int midVal = arr[mid];
 
         if (val < midVal) {
