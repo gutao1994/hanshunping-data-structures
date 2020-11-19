@@ -1,0 +1,74 @@
+package com.atguigu.search;
+
+import java.util.Arrays;
+
+public class InsertValueSearch {
+
+    public static void main(String[] args) {
+        int arr[] = SearchHelp.genSortArr(1000);
+//        System.out.println(Arrays.toString(arr));
+        int findVal = arr[520];
+
+        int index = insertValueSearch(arr, 0, arr.length - 1, findVal);
+//        int index = insertValueSearchError(arr, 0, arr.length - 1, findVal);
+        System.out.println("index = " + index);
+    }
+
+    public static int insertValueSearch(int[] arr, int left, int right, int val) {
+        if (left > right || val < arr[left] || val > arr[right]) {
+            return -1;
+        }
+
+        if (arr[left] == arr[right]) {
+            return left;
+        }
+
+        int mid = left + (right - left) * (val - arr[left]) / (arr[right] - arr[left]);
+        int midVal = arr[mid];
+
+        if (val < midVal) {
+            return insertValueSearch(arr, left, mid - 1, val);
+        } else if (val > midVal) {
+            return insertValueSearch(arr, mid + 1, right, val);
+        } else {
+            return mid;
+        }
+    }
+
+    public static int insertValueSearchError(int[] arr, int left, int right, int findVal) {
+        if (left > right || findVal < arr[0] || findVal > arr[arr.length - 1]) {
+            return -1;
+        }
+
+        int mid = left + (right - left) * (findVal - arr[left]) / (arr[right] - arr[left]);
+        int midVal = arr[mid];
+
+        if (findVal > midVal) {
+            return insertValueSearchError(arr, mid + 1, right, findVal);
+        } else if (findVal < midVal) {
+            return insertValueSearchError(arr, left, mid - 1, findVal);
+        } else {
+            return mid;
+        }
+    }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
