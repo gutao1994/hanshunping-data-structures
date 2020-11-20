@@ -4,44 +4,44 @@ public class ArrBinaryTreeDemo {
 
 	public static void main(String[] args) {
 		int[] arr = { 1, 2, 3, 4, 5, 6, 7 };
-		//´´½¨Ò»¸ö ArrBinaryTree
+		//åˆ›å»ºä¸€ä¸ª ArrBinaryTree
 		ArrBinaryTree arrBinaryTree = new ArrBinaryTree(arr);
 		arrBinaryTree.preOrder(); // 1,2,4,5,3,6,7
 	}
 
 }
 
-//±àĞ´Ò»¸öArrayBinaryTree, ÊµÏÖË³Ğò´æ´¢¶ş²æÊ÷±éÀú
+//ç¼–å†™ä¸€ä¸ªArrayBinaryTree, å®ç°é¡ºåºå­˜å‚¨äºŒå‰æ ‘éå†
 
 class ArrBinaryTree {
-	private int[] arr;//´æ´¢Êı¾İ½áµãµÄÊı×é
+	private int[] arr;//å­˜å‚¨æ•°æ®ç»“ç‚¹çš„æ•°ç»„
 
 	public ArrBinaryTree(int[] arr) {
 		this.arr = arr;
 	}
 	
-	//ÖØÔØpreOrder
+	//é‡è½½preOrder
 	public void preOrder() {
 		this.preOrder(0);
 	}
 	
-	//±àĞ´Ò»¸ö·½·¨£¬Íê³ÉË³Ğò´æ´¢¶ş²æÊ÷µÄÇ°Ğò±éÀú
+	//ç¼–å†™ä¸€ä¸ªæ–¹æ³•ï¼Œå®Œæˆé¡ºåºå­˜å‚¨äºŒå‰æ ‘çš„å‰åºéå†
 	/**
 	 * 
-	 * @param index Êı×éµÄÏÂ±ê 
+	 * @param index æ•°ç»„çš„ä¸‹æ ‡ 
 	 */
 	public void preOrder(int index) {
-		//Èç¹ûÊı×éÎª¿Õ£¬»òÕß arr.length = 0
+		//å¦‚æœæ•°ç»„ä¸ºç©ºï¼Œæˆ–è€… arr.length = 0
 		if(arr == null || arr.length == 0) {
-			System.out.println("Êı×éÎª¿Õ£¬²»ÄÜ°´ÕÕ¶ş²æÊ÷µÄÇ°Ğò±éÀú");
+			System.out.println("æ•°ç»„ä¸ºç©ºï¼Œä¸èƒ½æŒ‰ç…§äºŒå‰æ ‘çš„å‰åºéå†");
 		}
-		//Êä³öµ±Ç°Õâ¸öÔªËØ
+		//è¾“å‡ºå½“å‰è¿™ä¸ªå…ƒç´ 
 		System.out.println(arr[index]); 
-		//Ïò×óµİ¹é±éÀú
+		//å‘å·¦é€’å½’éå†
 		if((index * 2 + 1) < arr.length) {
 			preOrder(2 * index + 1 );
 		}
-		//ÏòÓÒµİ¹é±éÀú
+		//å‘å³é€’å½’éå†
 		if((index * 2 + 2) < arr.length) {
 			preOrder(2 * index + 2);
 		}

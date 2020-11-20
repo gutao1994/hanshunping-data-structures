@@ -7,90 +7,90 @@ import java.util.Date;
 public class HeapSort {
 
 	public static void main(String[] args) {
-		//ÒªÇó½«Êı×é½øĞĞÉıĞòÅÅĞò
+		//è¦æ±‚å°†æ•°ç»„è¿›è¡Œå‡åºæ’åº
 		//int arr[] = {4, 6, 8, 5, 9};
-		// ´´½¨Òª¸ø80000¸öµÄËæ»úµÄÊı×é
+		// åˆ›å»ºè¦ç»™80000ä¸ªçš„éšæœºçš„æ•°ç»„
 		int[] arr = new int[8000000];
 		for (int i = 0; i < 8000000; i++) {
-			arr[i] = (int) (Math.random() * 8000000); // Éú³ÉÒ»¸ö[0, 8000000) Êı
+			arr[i] = (int) (Math.random() * 8000000); // ç”Ÿæˆä¸€ä¸ª[0, 8000000) æ•°
 		}
 
-		System.out.println("ÅÅĞòÇ°");
+		System.out.println("æ’åºå‰");
 		Date data1 = new Date();
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String date1Str = simpleDateFormat.format(data1);
-		System.out.println("ÅÅĞòÇ°µÄÊ±¼äÊÇ=" + date1Str);
+		System.out.println("æ’åºå‰çš„æ—¶é—´æ˜¯=" + date1Str);
 		
 		heapSort(arr);
 		
 		Date data2 = new Date();
 		String date2Str = simpleDateFormat.format(data2);
-		System.out.println("ÅÅĞòÇ°µÄÊ±¼äÊÇ=" + date2Str);
-		//System.out.println("ÅÅĞòºó=" + Arrays.toString(arr));
+		System.out.println("æ’åºå‰çš„æ—¶é—´æ˜¯=" + date2Str);
+		//System.out.println("æ’åºå=" + Arrays.toString(arr));
 	}
 
-	//±àĞ´Ò»¸ö¶ÑÅÅĞòµÄ·½·¨
+	//ç¼–å†™ä¸€ä¸ªå †æ’åºçš„æ–¹æ³•
 	public static void heapSort(int arr[]) {
 		int temp = 0;
-		System.out.println("¶ÑÅÅĞò!!");
+		System.out.println("å †æ’åº!!");
 		
-//		//·Ö²½Íê³É
+//		//åˆ†æ­¥å®Œæˆ
 //		adjustHeap(arr, 1, arr.length);
-//		System.out.println("µÚÒ»´Î" + Arrays.toString(arr)); // 4, 9, 8, 5, 6
+//		System.out.println("ç¬¬ä¸€æ¬¡" + Arrays.toString(arr)); // 4, 9, 8, 5, 6
 //		
 //		adjustHeap(arr, 0, arr.length);
-//		System.out.println("µÚ2´Î" + Arrays.toString(arr)); // 9,6,8,5,4
+//		System.out.println("ç¬¬2æ¬¡" + Arrays.toString(arr)); // 9,6,8,5,4
 		
-		//Íê³ÉÎÒÃÇ×îÖÕ´úÂë
-		//½«ÎŞĞòĞòÁĞ¹¹½¨³ÉÒ»¸ö¶Ñ£¬¸ù¾İÉıĞò½µĞòĞèÇóÑ¡Ôñ´ó¶¥¶Ñ»òĞ¡¶¥¶Ñ
+		//å®Œæˆæˆ‘ä»¬æœ€ç»ˆä»£ç 
+		//å°†æ— åºåºåˆ—æ„å»ºæˆä¸€ä¸ªå †ï¼Œæ ¹æ®å‡åºé™åºéœ€æ±‚é€‰æ‹©å¤§é¡¶å †æˆ–å°é¡¶å †
 		for(int i = arr.length / 2 -1; i >=0; i--) {
 			adjustHeap(arr, i, arr.length);
 		}
 		
 		/*
-		 * 2).½«¶Ñ¶¥ÔªËØÓëÄ©Î²ÔªËØ½»»»£¬½«×î´óÔªËØ"³Á"µ½Êı×éÄ©¶Ë;
-¡¡¡¡			3).ÖØĞÂµ÷Õû½á¹¹£¬Ê¹ÆäÂú×ã¶Ñ¶¨Òå£¬È»ºó¼ÌĞø½»»»¶Ñ¶¥ÔªËØÓëµ±Ç°Ä©Î²ÔªËØ£¬·´¸´Ö´ĞĞµ÷Õû+½»»»²½Öè£¬Ö±µ½Õû¸öĞòÁĞÓĞĞò¡£
+		 * 2).å°†å †é¡¶å…ƒç´ ä¸æœ«å°¾å…ƒç´ äº¤æ¢ï¼Œå°†æœ€å¤§å…ƒç´ "æ²‰"åˆ°æ•°ç»„æœ«ç«¯;
+ã€€ã€€			3).é‡æ–°è°ƒæ•´ç»“æ„ï¼Œä½¿å…¶æ»¡è¶³å †å®šä¹‰ï¼Œç„¶åç»§ç»­äº¤æ¢å †é¡¶å…ƒç´ ä¸å½“å‰æœ«å°¾å…ƒç´ ï¼Œåå¤æ‰§è¡Œè°ƒæ•´+äº¤æ¢æ­¥éª¤ï¼Œç›´åˆ°æ•´ä¸ªåºåˆ—æœ‰åºã€‚
 		 */
 		for(int j = arr.length-1;j >0; j--) {
-			//½»»»
+			//äº¤æ¢
 			temp = arr[j];
 			arr[j] = arr[0];
 			arr[0] = temp;
 			adjustHeap(arr, 0, j); 
 		}
 		
-		//System.out.println("Êı×é=" + Arrays.toString(arr)); 
+		//System.out.println("æ•°ç»„=" + Arrays.toString(arr)); 
 		
 	}
 	
-	//½«Ò»¸öÊı×é(¶ş²æÊ÷), µ÷Õû³ÉÒ»¸ö´ó¶¥¶Ñ
+	//å°†ä¸€ä¸ªæ•°ç»„(äºŒå‰æ ‘), è°ƒæ•´æˆä¸€ä¸ªå¤§é¡¶å †
 	/**
-	 * ¹¦ÄÜ£º Íê³É ½« ÒÔ i ¶ÔÓ¦µÄ·ÇÒ¶×Ó½áµãµÄÊ÷µ÷Õû³É´ó¶¥¶Ñ
-	 * ¾ÙÀı  int arr[] = {4, 6, 8, 5, 9}; => i = 1 => adjustHeap => µÃµ½ {4, 9, 8, 5, 6}
-	 * Èç¹ûÎÒÃÇÔÙ´Îµ÷ÓÃ  adjustHeap ´«ÈëµÄÊÇ i = 0 => µÃµ½ {4, 9, 8, 5, 6} => {9,6,8,5, 4}
-	 * @param arr ´ıµ÷ÕûµÄÊı×é
-	 * @param i ±íÊ¾·ÇÒ¶×Ó½áµãÔÚÊı×éÖĞË÷Òı
-	 * @param lenght ±íÊ¾¶Ô¶àÉÙ¸öÔªËØ¼ÌĞøµ÷Õû£¬ length ÊÇÔÚÖğ½¥µÄ¼õÉÙ
+	 * åŠŸèƒ½ï¼š å®Œæˆ å°† ä»¥ i å¯¹åº”çš„éå¶å­ç»“ç‚¹çš„æ ‘è°ƒæ•´æˆå¤§é¡¶å †
+	 * ä¸¾ä¾‹  int arr[] = {4, 6, 8, 5, 9}; => i = 1 => adjustHeap => å¾—åˆ° {4, 9, 8, 5, 6}
+	 * å¦‚æœæˆ‘ä»¬å†æ¬¡è°ƒç”¨  adjustHeap ä¼ å…¥çš„æ˜¯ i = 0 => å¾—åˆ° {4, 9, 8, 5, 6} => {9,6,8,5, 4}
+	 * @param arr å¾…è°ƒæ•´çš„æ•°ç»„
+	 * @param i è¡¨ç¤ºéå¶å­ç»“ç‚¹åœ¨æ•°ç»„ä¸­ç´¢å¼•
+	 * @param lenght è¡¨ç¤ºå¯¹å¤šå°‘ä¸ªå…ƒç´ ç»§ç»­è°ƒæ•´ï¼Œ length æ˜¯åœ¨é€æ¸çš„å‡å°‘
 	 */
 	public  static void adjustHeap(int arr[], int i, int lenght) {
 		
-		int temp = arr[i];//ÏÈÈ¡³öµ±Ç°ÔªËØµÄÖµ£¬±£´æÔÚÁÙÊ±±äÁ¿
-		//¿ªÊ¼µ÷Õû
-		//ËµÃ÷
-		//1. k = i * 2 + 1 k ÊÇ i½áµãµÄ×ó×Ó½áµã
+		int temp = arr[i];//å…ˆå–å‡ºå½“å‰å…ƒç´ çš„å€¼ï¼Œä¿å­˜åœ¨ä¸´æ—¶å˜é‡
+		//å¼€å§‹è°ƒæ•´
+		//è¯´æ˜
+		//1. k = i * 2 + 1 k æ˜¯ iç»“ç‚¹çš„å·¦å­ç»“ç‚¹
 		for(int k = i * 2 + 1; k < lenght; k = k * 2 + 1) {
-			if(k+1 < lenght && arr[k] < arr[k+1]) { //ËµÃ÷×ó×Ó½áµãµÄÖµĞ¡ÓÚÓÒ×Ó½áµãµÄÖµ
-				k++; // k Ö¸ÏòÓÒ×Ó½áµã
+			if(k+1 < lenght && arr[k] < arr[k+1]) { //è¯´æ˜å·¦å­ç»“ç‚¹çš„å€¼å°äºå³å­ç»“ç‚¹çš„å€¼
+				k++; // k æŒ‡å‘å³å­ç»“ç‚¹
 			}
-			if(arr[k] > temp) { //Èç¹û×Ó½áµã´óÓÚ¸¸½áµã
-				arr[i] = arr[k]; //°Ñ½Ï´óµÄÖµ¸³¸øµ±Ç°½áµã
-				i = k; //!!! i Ö¸Ïò k,¼ÌĞøÑ­»·±È½Ï
+			if(arr[k] > temp) { //å¦‚æœå­ç»“ç‚¹å¤§äºçˆ¶ç»“ç‚¹
+				arr[i] = arr[k]; //æŠŠè¾ƒå¤§çš„å€¼èµ‹ç»™å½“å‰ç»“ç‚¹
+				i = k; //!!! i æŒ‡å‘ k,ç»§ç»­å¾ªç¯æ¯”è¾ƒ
 			} else {
 				break;//!
 			}
 		}
-		//µ±for Ñ­»·½áÊøºó£¬ÎÒÃÇÒÑ¾­½«ÒÔi Îª¸¸½áµãµÄÊ÷µÄ×î´óÖµ£¬·ÅÔÚÁË ×î¶¥(¾Ö²¿)
-		arr[i] = temp;//½«tempÖµ·Åµ½µ÷ÕûºóµÄÎ»ÖÃ
+		//å½“for å¾ªç¯ç»“æŸåï¼Œæˆ‘ä»¬å·²ç»å°†ä»¥i ä¸ºçˆ¶ç»“ç‚¹çš„æ ‘çš„æœ€å¤§å€¼ï¼Œæ”¾åœ¨äº† æœ€é¡¶(å±€éƒ¨)
+		arr[i] = temp;//å°†tempå€¼æ”¾åˆ°è°ƒæ•´åçš„ä½ç½®
 	}
 	
 }
