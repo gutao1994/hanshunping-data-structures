@@ -8,11 +8,11 @@ public class FibonacciSearch {
 //        int[] arr = {1,8, 10, 89, 1000, 1234};
         int[] arr = SearchHelp.genSortArr(1000000);
         int[] fibArr = fibArr();
-        int findVal = arr[85435];
+        int findVal = arr[1000000 - 1];
 
 //        System.out.println(Arrays.toString(fibArr));
 
-        int index = fibSearch1(arr, fibArr, findVal);
+        int index = fibSearch2(arr, fibArr, findVal);
         System.out.println("index = " + index);
     }
 
@@ -62,9 +62,41 @@ public class FibonacciSearch {
     /**
      * 递归方式
      */
-    public static int fibSearch2() {
+    public static int fibSearch2(int[] arr, int[] fibArr, int val) {
+        int k = 0;
 
-        return -1;
+        while (arr.length > fibArr[k] - 1) {
+            k++;
+        }
+
+        int[] tempArr = Arrays.copyOf(arr, fibArr[k] - 1);
+
+        for (int i = arr.length; i < tempArr.length; i++) {
+            tempArr[i] = arr[arr.length - 1];
+        }
+
+        int index = fibSearch2Run(tempArr, fibArr, k, 0, tempArr.length - 1, val);
+
+        return Math.min(index, arr.length - 1);
+    }
+
+    private static int fibSearch2Run(int[] arr, int[] fibArr, int k, int left, int right, int val) {
+        System.out.println("哈哈哈");
+
+        if (left > right) {
+            return -1;
+        }
+
+        int mid = left + fibArr[k - 1] - 1;
+        int midVal = arr[mid];
+
+        if (val < midVal) {
+            return fibSearch2Run(arr, fibArr, k - 1, left, mid - 1, val);
+        } else if (val > midVal) {
+            return  fibSearch2Run(arr, fibArr, k - 2, mid + 1, right, val);
+        } else {
+            return mid;
+        }
     }
 
     /**
