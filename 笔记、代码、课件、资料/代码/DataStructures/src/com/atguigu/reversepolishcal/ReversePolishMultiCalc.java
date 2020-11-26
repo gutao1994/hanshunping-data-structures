@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 public class ReversePolishMultiCalc {
 
 	 /**
-     * Æ¥Åä + - * / ( ) ÔËËã·û
+     * åŒ¹é… + - * / ( ) è¿ç®—ç¬¦
      */
     static final String SYMBOL = "\\+|-|\\*|/|\\(|\\)";
 
@@ -21,16 +21,16 @@ public class ReversePolishMultiCalc {
     static final String DIVISION = "/";
 
     /**
-     * ¼Óœp + -
+     * åŠ æ¸› + -
      */
     static final int LEVEL_01 = 1;
     /**
-     * ³Ë³ı * /
+     * ä¹˜é™¤ * /
      */
     static final int LEVEL_02 = 2;
 
     /**
-     * À¨ºÅ
+     * æ‹¬å·
      */
     static final int LEVEL_HIGH = Integer.MAX_VALUE;
 
@@ -39,17 +39,17 @@ public class ReversePolishMultiCalc {
     static List<String> data = Collections.synchronizedList(new ArrayList<String>());
 
     /**
-     * È¥³ıËùÓĞ¿Õ°×·û
+     * å»é™¤æ‰€æœ‰ç©ºç™½ç¬¦
      * @param s
      * @return
      */
     public static String replaceAllBlank(String s ){
-        // \\s+ Æ¥ÅäÈÎºÎ¿Õ°××Ö·û£¬°üÀ¨¿Õ¸ñ¡¢ÖÆ±í·û¡¢»»Ò³·ûµÈµÈ, µÈ¼ÛÓÚ[ \f\n\r\t\v]
+        // \\s+ åŒ¹é…ä»»ä½•ç©ºç™½å­—ç¬¦ï¼ŒåŒ…æ‹¬ç©ºæ ¼ã€åˆ¶è¡¨ç¬¦ã€æ¢é¡µç¬¦ç­‰ç­‰, ç­‰ä»·äº[ \f\n\r\t\v]
         return s.replaceAll("\\s+","");
     }
 
     /**
-     * ÅĞ¶ÏÊÇ²»ÊÇÊı×Ö int double long float
+     * åˆ¤æ–­æ˜¯ä¸æ˜¯æ•°å­— int double long float
      * @param s
      * @return
      */
@@ -59,7 +59,7 @@ public class ReversePolishMultiCalc {
     }
 
     /**
-     * ÅĞ¶ÏÊÇ²»ÊÇÔËËã·û
+     * åˆ¤æ–­æ˜¯ä¸æ˜¯è¿ç®—ç¬¦
      * @param s
      * @return
      */
@@ -68,7 +68,7 @@ public class ReversePolishMultiCalc {
     }
 
     /**
-     * Æ¥ÅäÔËËãµÈ¼¶
+     * åŒ¹é…è¿ç®—ç­‰çº§
      * @param s
      * @return
      */
@@ -82,7 +82,7 @@ public class ReversePolishMultiCalc {
     }
 
     /**
-     * Æ¥Åä
+     * åŒ¹é…
      * @param s
      * @throws Exception
      */
@@ -98,12 +98,12 @@ public class ReversePolishMultiCalc {
         for (int i = 0; i < s.length(); i++) {
             if(isSymbol(s.charAt(i)+"")){
                 each = s.charAt(i)+"";
-                //Õ»Îª¿Õ£¬(²Ù×÷·û£¬»òÕß ²Ù×÷·ûÓÅÏÈ¼¶´óÓÚÕ»¶¥ÓÅÏÈ¼¶ && ²Ù×÷·ûÓÅÏÈ¼¶²»ÊÇ( )µÄÓÅÏÈ¼¶ ¼°ÊÇ ) ²»ÄÜÖ±½ÓÈëÕ»
+                //æ ˆä¸ºç©ºï¼Œ(æ“ä½œç¬¦ï¼Œæˆ–è€… æ“ä½œç¬¦ä¼˜å…ˆçº§å¤§äºæ ˆé¡¶ä¼˜å…ˆçº§ && æ“ä½œç¬¦ä¼˜å…ˆçº§ä¸æ˜¯( )çš„ä¼˜å…ˆçº§ åŠæ˜¯ ) ä¸èƒ½ç›´æ¥å…¥æ ˆ
                 if(stack.isEmpty() || LEFT.equals(each)
                         || ((calcLevel(each) > calcLevel(stack.peek())) && calcLevel(each) < LEVEL_HIGH)){
                     stack.push(each);
                 }else if( !stack.isEmpty() && calcLevel(each) <= calcLevel(stack.peek())){
-                    //Õ»·Ç¿Õ£¬²Ù×÷·ûÓÅÏÈ¼¶Ğ¡ÓÚµÈÓÚÕ»¶¥ÓÅÏÈ¼¶Ê±³öÕ»ÈëÁĞ£¬Ö±µ½Õ»Îª¿Õ£¬»òÕßÓöµ½ÁË(£¬×îºó²Ù×÷·ûÈëÕ»
+                    //æ ˆéç©ºï¼Œæ“ä½œç¬¦ä¼˜å…ˆçº§å°äºç­‰äºæ ˆé¡¶ä¼˜å…ˆçº§æ—¶å‡ºæ ˆå…¥åˆ—ï¼Œç›´åˆ°æ ˆä¸ºç©ºï¼Œæˆ–è€…é‡åˆ°äº†(ï¼Œæœ€åæ“ä½œç¬¦å…¥æ ˆ
                     while (!stack.isEmpty() && calcLevel(each) <= calcLevel(stack.peek()) ){
                         if(calcLevel(stack.peek()) == LEVEL_HIGH){
                             break;
@@ -112,7 +112,7 @@ public class ReversePolishMultiCalc {
                     }
                     stack.push(each);
                 }else if(RIGHT.equals(each)){
-                    // ) ²Ù×÷·û£¬ÒÀ´Î³öÕ»ÈëÁĞÖ±µ½¿ÕÕ»»òÕßÓöµ½ÁËµÚÒ»¸ö)²Ù×÷·û£¬´ËÊ±)³öÕ»
+                    // ) æ“ä½œç¬¦ï¼Œä¾æ¬¡å‡ºæ ˆå…¥åˆ—ç›´åˆ°ç©ºæ ˆæˆ–è€…é‡åˆ°äº†ç¬¬ä¸€ä¸ª)æ“ä½œç¬¦ï¼Œæ­¤æ—¶)å‡ºæ ˆ
                     while (!stack.isEmpty() && LEVEL_HIGH >= calcLevel(stack.peek())){
                         if(LEVEL_HIGH == calcLevel(stack.peek())){
                             stack.pop();
@@ -121,7 +121,7 @@ public class ReversePolishMultiCalc {
                         data.add(stack.pop());
                     }
                 }
-                start = i ;    //Ç°Ò»¸öÔËËã·ûµÄÎ»ÖÃ
+                start = i ;    //å‰ä¸€ä¸ªè¿ç®—ç¬¦çš„ä½ç½®
             }else if( i == s.length()-1 || isSymbol(s.charAt(i+1)+"") ){
                 each = start == 0 ? s.substring(start,i+1) : s.substring(start+1,i+1);
                 if(isNumber(each)) {
@@ -131,7 +131,7 @@ public class ReversePolishMultiCalc {
                 throw new RuntimeException("data not match number");
             }
         }
-        //Èç¹ûÕ»Àï»¹ÓĞÔªËØ£¬´ËÊ±ÔªËØĞèÒªÒÀ´Î³öÕ»ÈëÁĞ£¬¿ÉÒÔÏëÏóÕ»ÀïÊ£ÏÂÕ»¶¥Îª/£¬Õ»µ×Îª+£¬Ó¦¸ÃÒÀ´Î³öÕ»ÈëÁĞ£¬¿ÉÒÔÖ±½Ó·­×ªÕû¸östack Ìí¼Óµ½¶ÓÁĞ
+        //å¦‚æœæ ˆé‡Œè¿˜æœ‰å…ƒç´ ï¼Œæ­¤æ—¶å…ƒç´ éœ€è¦ä¾æ¬¡å‡ºæ ˆå…¥åˆ—ï¼Œå¯ä»¥æƒ³è±¡æ ˆé‡Œå‰©ä¸‹æ ˆé¡¶ä¸º/ï¼Œæ ˆåº•ä¸º+ï¼Œåº”è¯¥ä¾æ¬¡å‡ºæ ˆå…¥åˆ—ï¼Œå¯ä»¥ç›´æ¥ç¿»è½¬æ•´ä¸ªstack æ·»åŠ åˆ°é˜Ÿåˆ—
         Collections.reverse(stack);
         data.addAll(new ArrayList<>(stack));
 
@@ -140,7 +140,7 @@ public class ReversePolishMultiCalc {
     }
 
     /**
-     * Ëã³ö½á¹û
+     * ç®—å‡ºç»“æœ
      * @param list
      * @return
      */
@@ -171,7 +171,7 @@ public class ReversePolishMultiCalc {
     }
 
     /**
-     * ÔËËã
+     * è¿ç®—
      * @param s1
      * @param s2
      * @param symbol

@@ -10,80 +10,80 @@ public class HuffmanTree {
 		int arr[] = { 13, 7, 8, 3, 29, 6, 1 };
 		Node root = createHuffmanTree(arr);
 		
-		//²âÊÔÒ»°Ñ
+		//æµ‹è¯•ä¸€æŠŠ
 		preOrder(root); //
 		
 	}
 	
-	//±àĞ´Ò»¸öÇ°Ğò±éÀúµÄ·½·¨
+	//ç¼–å†™ä¸€ä¸ªå‰åºéå†çš„æ–¹æ³•
 	public static void preOrder(Node root) {
 		if(root != null) {
 			root.preOrder();
 		}else{
-			System.out.println("ÊÇ¿ÕÊ÷£¬²»ÄÜ±éÀú~~");
+			System.out.println("æ˜¯ç©ºæ ‘ï¼Œä¸èƒ½éå†~~");
 		}
 	}
 
-	// ´´½¨ºÕ·òÂüÊ÷µÄ·½·¨
+	// åˆ›å»ºèµ«å¤«æ›¼æ ‘çš„æ–¹æ³•
 	/**
 	 * 
-	 * @param arr ĞèÒª´´½¨³É¹ş·òÂüÊ÷µÄÊı×é
-	 * @return ´´½¨ºÃºóµÄºÕ·òÂüÊ÷µÄroot½áµã
+	 * @param arr éœ€è¦åˆ›å»ºæˆå“ˆå¤«æ›¼æ ‘çš„æ•°ç»„
+	 * @return åˆ›å»ºå¥½åçš„èµ«å¤«æ›¼æ ‘çš„rootç»“ç‚¹
 	 */
 	public static Node createHuffmanTree(int[] arr) {
-		// µÚÒ»²½ÎªÁË²Ù×÷·½±ã
-		// 1. ±éÀú arr Êı×é
-		// 2. ½«arrµÄÃ¿¸öÔªËØ¹¹³É³ÉÒ»¸öNode
-		// 3. ½«Node ·ÅÈëµ½ArrayListÖĞ
+		// ç¬¬ä¸€æ­¥ä¸ºäº†æ“ä½œæ–¹ä¾¿
+		// 1. éå† arr æ•°ç»„
+		// 2. å°†arrçš„æ¯ä¸ªå…ƒç´ æ„æˆæˆä¸€ä¸ªNode
+		// 3. å°†Node æ”¾å…¥åˆ°ArrayListä¸­
 		List<Node> nodes = new ArrayList<Node>();
 		for (int value : arr) {
 			nodes.add(new Node(value));
 		}
 		
-		//ÎÒÃÇ´¦ÀíµÄ¹ı³ÌÊÇÒ»¸öÑ­»·µÄ¹ı³Ì
+		//æˆ‘ä»¬å¤„ç†çš„è¿‡ç¨‹æ˜¯ä¸€ä¸ªå¾ªç¯çš„è¿‡ç¨‹
 		
 		
 		while(nodes.size() > 1) {
 		
-			//ÅÅĞò ´ÓĞ¡µ½´ó 
+			//æ’åº ä»å°åˆ°å¤§ 
 			Collections.sort(nodes);
 			
 			System.out.println("nodes =" + nodes);
 			
-			//È¡³ö¸ù½ÚµãÈ¨Öµ×îĞ¡µÄÁ½¿Å¶ş²æÊ÷ 
-			//(1) È¡³öÈ¨Öµ×îĞ¡µÄ½áµã£¨¶ş²æÊ÷£©
+			//å–å‡ºæ ¹èŠ‚ç‚¹æƒå€¼æœ€å°çš„ä¸¤é¢—äºŒå‰æ ‘ 
+			//(1) å–å‡ºæƒå€¼æœ€å°çš„ç»“ç‚¹ï¼ˆäºŒå‰æ ‘ï¼‰
 			Node leftNode = nodes.get(0);
-			//(2) È¡³öÈ¨ÖµµÚ¶şĞ¡µÄ½áµã£¨¶ş²æÊ÷£©
+			//(2) å–å‡ºæƒå€¼ç¬¬äºŒå°çš„ç»“ç‚¹ï¼ˆäºŒå‰æ ‘ï¼‰
 			Node rightNode = nodes.get(1);
 			
-			//(3)¹¹½¨Ò»¿ÅĞÂµÄ¶ş²æÊ÷
+			//(3)æ„å»ºä¸€é¢—æ–°çš„äºŒå‰æ ‘
 			Node parent = new Node(leftNode.value + rightNode.value);
 			parent.left = leftNode;
 			parent.right = rightNode;
 			
-			//(4)´ÓArrayListÉ¾³ı´¦Àí¹ıµÄ¶ş²æÊ÷
+			//(4)ä»ArrayListåˆ é™¤å¤„ç†è¿‡çš„äºŒå‰æ ‘
 			nodes.remove(leftNode);
 			nodes.remove(rightNode);
-			//(5)½«parent¼ÓÈëµ½nodes
+			//(5)å°†parentåŠ å…¥åˆ°nodes
 			nodes.add(parent);
 		}
 		
-		//·µ»Ø¹ş·òÂüÊ÷µÄroot½áµã
+		//è¿”å›å“ˆå¤«æ›¼æ ‘çš„rootç»“ç‚¹
 		return nodes.get(0);
 		
 	}
 }
 
-// ´´½¨½áµãÀà
-// ÎªÁËÈÃNode ¶ÔÏó³ÖĞøÅÅĞòCollections¼¯ºÏÅÅĞò
-// ÈÃNode ÊµÏÖComparable½Ó¿Ú
+// åˆ›å»ºç»“ç‚¹ç±»
+// ä¸ºäº†è®©Node å¯¹è±¡æŒç»­æ’åºCollectionsé›†åˆæ’åº
+// è®©Node å®ç°Comparableæ¥å£
 class Node implements Comparable<Node> {
-	int value; // ½áµãÈ¨Öµ
-	char c; //×Ö·û
-	Node left; // Ö¸Ïò×ó×Ó½áµã
-	Node right; // Ö¸ÏòÓÒ×Ó½áµã
+	int value; // ç»“ç‚¹æƒå€¼
+	char c; //å­—ç¬¦
+	Node left; // æŒ‡å‘å·¦å­ç»“ç‚¹
+	Node right; // æŒ‡å‘å³å­ç»“ç‚¹
 
-	//Ğ´Ò»¸öÇ°Ğò±éÀú
+	//å†™ä¸€ä¸ªå‰åºéå†
 	public void preOrder() {
 		System.out.println(this);
 		if(this.left != null) {
@@ -106,7 +106,7 @@ class Node implements Comparable<Node> {
 	@Override
 	public int compareTo(Node o) {
 		// TODO Auto-generated method stub
-		// ±íÊ¾´ÓĞ¡µ½´óÅÅĞò
+		// è¡¨ç¤ºä»å°åˆ°å¤§æ’åº
 		return this.value - o.value;
 	}
 
