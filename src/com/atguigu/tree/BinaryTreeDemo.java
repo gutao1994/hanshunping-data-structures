@@ -10,6 +10,21 @@ public class BinaryTreeDemo {
 
 }
 
+class BinaryTree {
+
+    public boolean delNode() {
+
+        return false;
+    }
+}
+
+class HeroNode {
+
+    public boolean delNode() {
+
+        return false;
+    }
+}
 
 
 
