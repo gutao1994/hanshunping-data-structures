@@ -16,8 +16,8 @@ public class BinaryTreeDemo {
         root.setLeft(node2);
 //        node2.setLeft(node2_1);
         root.setRight(node3);
-        node3.setRight(node4);
-        node3.setLeft(node5);
+        node3.setLeft(node4);
+        node3.setRight(node5);
         node4.setRight(node2_2);
         binaryTree.setRoot(root);
 
@@ -43,7 +43,23 @@ class BinaryTree {
         if (this.root != null) {
             this.root.preOrder();
         } else {
-            System.out.println("二叉树为空，无法遍历");
+            System.out.println("二叉树为空，无法前序遍历");
+        }
+    }
+
+    public void infixOrder() {
+        if (this.root != null) {
+            this.root.infixOrder();
+        } else {
+            System.out.println("二叉树为空，无法中序遍历");
+        }
+    }
+
+    public void postOrder() {
+        if (this.root != null) {
+            this.root.postOrder();
+        } else {
+            System.out.println("二叉树为空，无法后序遍历");
         }
     }
 
@@ -121,6 +137,36 @@ class HeroNode {
         if (this.right != null) {
             this.right.preOrder();
         }
+    }
+
+    public void infixOrder() {
+        //go left
+        if (this.left != null) {
+            this.left.infixOrder();
+        }
+
+        //action
+        System.out.println(this);
+
+        //go right
+        if (this.right != null) {
+            this.right.infixOrder();
+        }
+    }
+
+    public void postOrder() {
+        //go left
+        if (this.left != null) {
+            this.left.infixOrder();
+        }
+
+        //go right
+        if (this.right != null) {
+            this.right.infixOrder();
+        }
+
+        //action
+        System.out.println(this);
     }
 
     public boolean delNode(int no) {
